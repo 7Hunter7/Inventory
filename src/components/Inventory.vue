@@ -6,9 +6,10 @@
 </template>
 
 <script setup>
-import InventoryItem from "./InventoryItem.vue";
 import Grid from "./Grid.vue";
+import InventoryItem from "./InventoryItem.vue";
 import { useInventoryStore } from "@/stores/store";
+import { ref, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 
 const store = useInventoryStore();
