@@ -39,25 +39,39 @@ const removeItem = (id) => {
   justify-content: center;
   align-items: center;
   z-index: 100;
-
   .item-modal-content {
-    background-color: #fff;
+    background-color: #333;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     button {
       margin-bottom: 10px;
+      border: none;
+      background-color: #747474;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.1s ease-in;
+      &:hover {
+        transform: scale(1.1);
+        background-color: #a5a5a5;
+      }
       &:first-child {
         align-self: flex-end;
+        background-color: #952525;
+        &:hover {
+          background-color: #b62e2e;
+        }
       }
     }
     .modal-item-wrapper {
       display: flex;
       .modal-item-background {
-        width: 80px;
-        height: 80px;
-        background-color: green;
+        width: 48px;
+        height: 48px;
+        background-color: #7faa65;
         opacity: 0.5;
         border-radius: 15%;
         display: flex;
