@@ -23,6 +23,25 @@ const addItem = () => {
   justify-content: center;
   input {
     margin-right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+  }
+  button {
+    margin-bottom: 10px;
+    border: none;
+    background-color: #747474;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+    &:hover {
+      transform: scale(1.1);
+      background-color: #a5a5a5;
+    }
   }
 }
 </style>
