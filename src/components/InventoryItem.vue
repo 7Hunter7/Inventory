@@ -42,7 +42,6 @@ const selectItem = () => {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transform: translate(50%, 50%);
   .item-background {
     width: 48px;
     height: 48px;
