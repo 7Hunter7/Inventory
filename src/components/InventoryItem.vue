@@ -8,7 +8,6 @@
     @click="selectItem"
   >
     <div class="item-background"></div>
-    <span class="item-count">{{ item.count }}</span>
   </div>
 </template>
 
