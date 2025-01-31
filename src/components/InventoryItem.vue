@@ -13,7 +13,6 @@
 
 <script setup>
 import { useInventoryStore } from "@/stores/store";
-import { defineProps } from "vue";
 
 const props = defineProps({
   item: {
