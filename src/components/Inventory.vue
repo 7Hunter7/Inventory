@@ -13,6 +13,11 @@ import { storeToRefs } from "pinia";
 
 const store = useInventoryStore();
 const { items } = storeToRefs(store);
+
+const gridCells = ref([]);
+onMounted(() => {
+  console.log(gridCells.value);
+});
 </script>
 
 <style lang="scss">
