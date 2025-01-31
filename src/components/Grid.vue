@@ -1,10 +1,16 @@
 <template>
   <div class="grid">
     <div class="grid-row" v-for="row in 5" :key="row">
-      <div class="grid-cell" v-for="col in 5" :key="col"></div>
+      <div class="grid-cell" v-for="col in 5" :key="col" ref="gridCells"></div>
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from "vue";
+
+const gridCells = ref([]);
+</script>
 
 <style lang="scss">
 .grid {
