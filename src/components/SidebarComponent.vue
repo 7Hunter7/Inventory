@@ -25,19 +25,16 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .sidebar {
-  width: 236px;
-  height: 500px;
-  border-radius: 12px;
+  max-width: 236px;
+  border-radius: 1rem;
   border: 1px solid #4d4d4d;
   padding: 18px 14px 24px 14px;
   border-radius: 0.5rem;
   background: #262626;
 }
 .sidebar-image {
-  width: 100%;
   max-height: 240px;
   border-radius: 0.5rem;
-  width: 100%;
 }
 .sidebar-content {
   display: flex;
@@ -45,8 +42,7 @@ const props = defineProps({
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-evenly;
-  gap: 1rem;
-  padding: 0 8px 0 10px;
+  padding: 0 10px 0 10px;
 }
 .sidebar-title {
   margin-top: 20px;
@@ -59,28 +55,29 @@ const props = defineProps({
 /* Текстовые блоки */
 .sidebar-text {
   height: 0.625rem;
+  margin-bottom: 1rem;
   border-radius: 0.25rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
 
-  &:first-child {
-    margin-top: 0px;
+  &:nth-child(2) {
     width: 155px;
   }
-  &:nth-child(2) {
-    width: 100%;
-  }
   &:nth-child(3) {
-    width: 170px;
+    width: 190px;
   }
   &:nth-child(4) {
-    width: 160px;
+    width: 170px;
   }
   &:nth-child(5) {
+    width: 160px;
+  }
+  &:nth-child(6) {
     width: 140px;
   }
   &:last-child {
-    padding-bottom: 0;
-    width: 140px;
+    margin-top: 14px;
+    width: 80px;
+    margin-bottom: 0;
   }
 }
 </style>
