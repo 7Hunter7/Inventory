@@ -1,12 +1,16 @@
 <template>
-  <div id="app">
-    <Inventory />
-    <ItemModal />
-    <AddItemBar />
+  <div id="app" class="app">
+    <SidebarComponent />
+    <section class="section__grid">
+      <Inventory />
+      <ItemModal />
+      <AddItemBar />
+    </section>
   </div>
 </template>
 
 <script setup>
+import SidebarComponent from "./components/SidebarComponent.vue";
 import Inventory from "./components/Inventory.vue";
 import ItemModal from "./components/ItemModal.vue";
 import AddItemBar from "./components/AddItemBar.vue";
@@ -25,13 +29,17 @@ import AddItemBar from "./components/AddItemBar.vue";
   text-align: center;
   color: #fff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 10px;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-content: center;
+  gap: 24px;
 }
 
 body {
   background-color: black;
-  margin: 0;
+  margin: 0 auto;
+  padding: 1rem;
 }
 </style>
