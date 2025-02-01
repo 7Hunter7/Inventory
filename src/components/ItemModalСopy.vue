@@ -36,7 +36,7 @@
 import { defineProps, defineEmits } from "vue";
 import ModalImage from "/ModalImage.png";
 
-defineProps({
+const props = defineProps({
   imageUrl: {
     type: String,
     default: "",
