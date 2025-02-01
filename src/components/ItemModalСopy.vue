@@ -68,7 +68,6 @@ const emits = defineEmits(["close", "delete"]);
   position: relative;
   z-index: 1;
 }
-
 .close-button {
   position: absolute;
   z-index: 2;
@@ -86,7 +85,7 @@ const emits = defineEmits(["close", "delete"]);
   margin-bottom: 30px;
 }
 .modal-hr {
-  width: 211px;
+  width: 210px;
   height: 1px;
   background: #4d4d4d;
 }
@@ -96,7 +95,7 @@ const emits = defineEmits(["close", "delete"]);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
+  padding: 0 5px;
 }
 .modal-title {
   margin-top: 1rem;
@@ -112,6 +111,9 @@ const emits = defineEmits(["close", "delete"]);
   margin-bottom: 1rem;
   border-radius: 0.25rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
+  &:nth-child(2) {
+    width: 100%;
+  }
   &:nth-child(3) {
     width: 100%;
   }
@@ -119,12 +121,9 @@ const emits = defineEmits(["close", "delete"]);
     width: 100%;
   }
   &:nth-child(5) {
-    width: 100%;
-  }
-  &:nth-child(6) {
     width: 180px;
   }
-  &:nth-child(6) {
+  &:last-child {
     width: 80px;
     margin-bottom: 0;
   }
