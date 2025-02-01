@@ -23,41 +23,36 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .sidebar {
-  border: 1px solid #4d4d4d;
-  border-radius: 12px;
   width: 236px;
+  height: 500px;
+  border-radius: 12px;
+  border: 1px solid #4d4d4d;
   padding: 18px 14px 24px 14px;
   border-radius: 0.5rem;
   background: #262626;
 }
 .sidebar-image {
-  position: relative;
-  z-index: 2;
   width: 100%;
-  height: auto;
+  max-height: 240px;
   border-radius: 0.5rem;
-  & img {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.1);
-  }
+  width: 100%;
 }
 .sidebar-content {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 1rem;
+  padding: 0 8px 0 10px;
 }
 .sidebar-title {
+  margin-top: 20px;
+  margin-bottom: 24px;
   border-radius: 0.5rem;
-  width: 190px;
+  width: 100%;
   height: 26px;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
 }
@@ -66,20 +61,26 @@ const props = defineProps({
   height: 0.625rem;
   border-radius: 0.25rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
-}
-.sidebar-text:first-child {
-  width: 155px;
-}
-.sidebar-text:nth-child(2) {
-  width: 190px;
-}
-.sidebar-text:nth-child(3) {
-  width: 170px;
-}
-.sidebar-text:nth-child(4) {
-  width: 160px;
-}
-.sidebar-text:last-child {
-  width: 140px;
+
+  &:first-child {
+    margin-top: 0px;
+    width: 155px;
+  }
+  &:nth-child(2) {
+    width: 100%;
+  }
+  &:nth-child(3) {
+    width: 170px;
+  }
+  &:nth-child(4) {
+    width: 160px;
+  }
+  &:nth-child(5) {
+    width: 140px;
+  }
+  &:last-child {
+    padding-bottom: 0;
+    width: 140px;
+  }
 }
 </style>

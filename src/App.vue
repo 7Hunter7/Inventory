@@ -27,6 +27,7 @@ import AddItemBar from "./components/AddItemBar.vue";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  font-size: 16px;
   color: #fff;
   display: flex;
   flex-direction: row;
