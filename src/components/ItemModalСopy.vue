@@ -51,6 +51,7 @@ const emits = defineEmits(["close", "delete"]);
 
 <style lang="scss" scoped>
 .modal-container {
+  position: relative;
   top: 1rem;
   right: 1rem;
   display: flex;
@@ -65,12 +66,9 @@ const emits = defineEmits(["close", "delete"]);
   z-index: 20;
   border: 1px solid #4d4d4d;
   padding: 55px 15px 18px 15px;
-  position: relative;
-  z-index: 1;
 }
 .close-button {
   position: absolute;
-  z-index: 2;
   top: 14px;
   right: 14px;
   border: none;
@@ -111,9 +109,6 @@ const emits = defineEmits(["close", "delete"]);
   margin-bottom: 1rem;
   border-radius: 0.25rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
-  &:nth-child(2) {
-    width: 100%;
-  }
   &:nth-child(3) {
     width: 100%;
   }
@@ -121,14 +116,16 @@ const emits = defineEmits(["close", "delete"]);
     width: 100%;
   }
   &:nth-child(5) {
+    width: 100%;
+  }
+  &:nth-child(6) {
     width: 180px;
   }
-  &:last-child {
+  &:nth-child(7) {
     width: 80px;
     margin-bottom: 0;
   }
 }
-
 .delete-button {
   width: 100%;
   background: #fa7272;
