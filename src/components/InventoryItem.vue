@@ -33,30 +33,33 @@ const selectItem = () => {
 <style lang="scss">
 .inventory-item {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
+  z-index: 2;
   display: flex;
-  cursor: pointer;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  // cursor: pointer;
+  cursor: url("./icons/cursor"), avto;
+  width: 48px;
+  height: 48px;
+  border-radius: 5%;
+  background-color: #7faa65;
+  transform: translate(55%, 55%);
   .item-background {
-    width: 48px;
-    height: 48px;
-    background-color: #7faa65;
-    border-radius: 15%;
+    position: relative;
+    z-index: 3;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.5);
+    width: 48px;
+    height: 48px;
+    border-radius: 5%;
+    backdrop-filter: blur(12px);
+    background: rgba(184, 217, 152, 0.35);
+    transform: translate(6px, -6px);
     transition: all 0.1s ease-in;
-    z-index: 3;
   }
   &:hover .item-background {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px 6px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
   }
   &.stacked {
     transform: translate(56px, 44px);
@@ -87,6 +90,7 @@ const selectItem = () => {
     border-radius: 6px 0 0 0;
     width: 16px;
     height: 16px;
+    color: #fff;
     background: #262626;
   }
 }
