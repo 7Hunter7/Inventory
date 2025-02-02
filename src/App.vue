@@ -3,48 +3,28 @@
     <div class="content">
       <SidebarComponent />
       <section class="section__grid">
-        <Inventory />
-        <AddItemBar />
+        <div class="inventory-wrapper">
+          <InventoryGrid />
+          <ItemModal v-if="inventoryStore.isItemModalOpen" />
+        </div>
       </section>
     </div>
   </div>
   <FooterComponent @close="handleFooterClose" />
-  <ItemModal
-    v-if="isModalOpen"
-    imageUrl="/Modal.png"
-    :blockCount="7"
-    @close="closeModal"
-    @delete="handleDelete"
-  />
-  <QuantityModal />
-  <button @click="openModal">Открыть модалку</button>
 </template>
 
 <script setup>
-import { ref } from "vue";
 import SidebarComponent from "./components/SidebarComponent.vue";
-import Inventory from "./components/Inventory.vue";
+import InventoryGrid from "./components/InventoryGrid.vue";
 import ItemModal from "./components/ItemModal.vue";
-import AddItemBar from "./components/AddItemBar.vue";
 import FooterComponent from "./components/FooterComponent.vue";
-import QuantityModal from "./components/QuantityModal.vue";
+import { useInventoryStore } from "./store";
+
+const inventoryStore = useInventoryStore();
 
 function handleFooterClose() {
   // Логика при нажатии на кнопку закрытия в подвале
   console.log("Footer closed");
-}
-const isModalOpen = ref(false);
-function openModal() {
-  isModalOpen.value = true;
-}
-
-function closeModal() {
-  isModalOpen.value = false;
-}
-
-function handleDelete() {
-  console.log("delete modal");
-  closeModal();
 }
 </script>
 
@@ -83,5 +63,9 @@ body {
   flex-wrap: nowrap;
   align-content: center;
   gap: 24px;
+}
+.inventory-wrapper {
+  display: flex;
+  gap: 20px;
 }
 </style>
