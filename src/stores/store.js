@@ -17,30 +17,30 @@ export const useInventoryStore = defineStore("inventory", {
 
   actions: {
     updateItem(id, newQuantity) {
-      const itemIndex = store.items.findIndex((item) => item.id === id);
+      const itemIndex = this.items.findIndex((item) => item.id === id);
       if (itemIndex !== -1) {
-        store.items[itemIndex].quantity = newQuantity;
+        this.items[itemIndex].quantity = newQuantity;
         if (newQuantity === 0) {
-          store.items.splice(itemIndex, 1);
+          this.items.splice(itemIndex, 1);
         }
       }
     },
     removeItem(id, quantityToRemove) {
-      const itemIndex = store.items.findIndex((item) => item.id === id);
+      const itemIndex = this.items.findIndex((item) => item.id === id);
       if (itemIndex !== -1) {
-        const currentQuantity = store.items[itemIndex].quantity;
+        const currentQuantity = this.items[itemIndex].quantity;
         const newQuantity = Math.max(0, currentQuantity - quantityToRemove);
-        store.items[itemIndex].quantity = newQuantity;
+        this.items[itemIndex].quantity = newQuantity;
         if (newQuantity === 0) {
-          store.items.splice(itemIndex, 1);
+          this.items.splice(itemIndex, 1);
         }
       }
     },
     moveItem(itemId, newX, newY) {
-      const itemIndex = store.items.findIndex((item) => item.id === itemId);
+      const itemIndex = this.items.findIndex((item) => item.id === itemId);
       if (itemIndex !== -1) {
-        store.items[itemIndex].x = newX;
-        store.items[itemIndex].y = newY;
+        this.items[itemIndex].x = newX;
+        this.items[itemIndex].y = newY;
       }
     },
     setSelectedItem(item) {
