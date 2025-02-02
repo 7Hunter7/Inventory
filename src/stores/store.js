@@ -8,40 +8,56 @@ export const useInventoryStore = defineStore("inventory", {
       { id: 3, quantity: 5, x: 2, y: 0, image: "/Element_3.png" },
     ],
     selectedItem: null,
-    isModalOpen: false,
-    nextItemId: 1,
+    isItemModalOpen: false,
+    isQuantityModalOpen: false,
+    draggedItem: null,
+    hoveredCell: null,
+    removeItemQuantity: null,
   }),
 
   actions: {
-    addItem(item) {
-      item.id = this.nextItemId;
-      this.nextItemId++;
-      this.items.push(item);
-    },
-    removeItem(id) {
-      this.items = this.items.filter((item) => item.id !== id);
-    },
-    updateItemPosition(id, x, y) {
-      const item = this.items.find((item) => item.id === id);
-      if (item) {
-        item.x = x;
-        item.y = y;
+    updateItem(id, newQuantity) {
+      const itemIndex = store.items.findIndex((item) => item.id === id);
+      if (itemIndex !== -1) {
+        store.items[itemIndex].quantity = newQuantity;
+        if (newQuantity === 0) {
+          store.items.splice(itemIndex, 1);
+        }
       }
     },
-    updateItemCount(id, count) {
-      const item = this.items.find((item) => item.id === id);
-      if (item) {
-        item.count = count;
+    removeItem(id, quantityToRemove) {
+      const itemIndex = store.items.findIndex((item) => item.id === id);
+      if (itemIndex !== -1) {
+        const currentQuantity = store.items[itemIndex].quantity;
+        const newQuantity = Math.max(0, currentQuantity - quantityToRemove);
+        store.items[itemIndex].quantity = newQuantity;
+        if (newQuantity === 0) {
+          store.items.splice(itemIndex, 1);
+        }
+      }
+    },
+    moveItem(itemId, newX, newY) {
+      const itemIndex = store.items.findIndex((item) => item.id === itemId);
+      if (itemIndex !== -1) {
+        store.items[itemIndex].x = newX;
+        store.items[itemIndex].y = newY;
       }
     },
     setSelectedItem(item) {
       this.selectedItem = item;
     },
-    openModal() {
-      this.isModalOpen = true;
+    openItemModal() {
+      this.isItemModalOpen = true;
     },
-    closeModal() {
-      this.isModalOpen = false;
+    closeItemModal() {
+      this.isItemModalOpen = false;
+      this.selectedItem = null;
+    },
+    openQuantityModall() {
+      this.isQuantityModalOpen = true;
+    },
+    closeQuantityModal() {
+      this.isQuantityModalOpen = false;
       this.selectedItem = null;
     },
   },
