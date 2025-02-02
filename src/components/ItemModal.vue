@@ -1,6 +1,6 @@
 <template>
-  <aside class="modal">
-    <button class="close-button" @click="$emit('close')">
+  <aside class="modal" :style="modalPosition">
+    <button class="close-button" @click="closeModal">
       <svg
         width="12"
         height="12"
@@ -14,7 +14,11 @@
       </svg>
     </button>
     <div class="modal-container">
-      <img class="modal-image" :src="ModalImage" alt="Modal Image" />
+      <img
+        class="modal-image"
+        :src="inventoryStore.selectedItem?.image"
+        alt="Item Image"
+      />
       <div class="modal-content">
         <div class="modal-hr"></div>
         <h1 class="modal-title"></h1>
@@ -24,28 +28,47 @@
           :key="index"
         ></div>
         <div class="modal-hr"></div>
-        <button class="delete-button" @click="$emit('delete')">
+        <button class="delete-button" @click="openQuantityModal">
           Удалить предмет
         </button>
       </div>
     </div>
+    <quantity-modal
+      v-if="inventoryStore.isQuantityModalOpen"
+      :item="inventoryStore.selectedItem"
+    ></quantity-modal>
   </aside>
 </template>
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
-import ModalImage from "/ModalImage.png";
+import { useInventoryStore } from "../store";
+import QuantityModal from "./QuantityModal.vue";
 
 const props = defineProps({
-  imageUrl: {
-    type: String,
-    default: "",
-  },
   blockCount: {
     type: Number,
     default: 6,
   },
 });
+
+const inventoryStore = useInventoryStore();
+
+const closeModal = () => {
+  inventoryStore.closeItemModal();
+};
+
+const openQuantityModal = () => {
+  inventoryStore.openQuantityModall();
+};
+const modalPosition = () => {
+  return {
+    top: "50%",
+    right: "calc(100% - 525px - 20px)",
+    transform: "translateY(-50%)",
+  };
+};
+
 const emits = defineEmits(["close", "delete"]);
 </script>
 
