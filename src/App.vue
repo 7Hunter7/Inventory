@@ -4,19 +4,19 @@
       <SidebarComponent />
       <section class="section__grid">
         <Inventory />
-        <ItemModal />
         <AddItemBar />
       </section>
     </div>
   </div>
   <FooterComponent @close="handleFooterClose" />
-  <ItemModalСopy
+  <ItemModal
     v-if="isModalOpen"
     imageUrl="/Modal.png"
     :blockCount="7"
     @close="closeModal"
     @delete="handleDelete"
   />
+  <QuantityModal />
   <button @click="openModal">Открыть модалку</button>
 </template>
 
@@ -27,7 +27,7 @@ import Inventory from "./components/Inventory.vue";
 import ItemModal from "./components/ItemModal.vue";
 import AddItemBar from "./components/AddItemBar.vue";
 import FooterComponent from "./components/FooterComponent.vue";
-import ItemModalСopy from "./components/ItemModalСopy.vue";
+import QuantityModal from "./components/QuantityModal.vue";
 
 function handleFooterClose() {
   // Логика при нажатии на кнопку закрытия в подвале
