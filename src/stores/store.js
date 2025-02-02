@@ -5,7 +5,7 @@ export const useInventoryStore = defineStore("inventory", {
     items: [
       { id: 1, quantity: 4, x: 0, y: 0, image: "/Element_1.png" },
       { id: 2, quantity: 2, x: 1, y: 0, image: "/Element_2.png" },
-      { id: 3, quantity: 5, x: 2, y: 0, image: "Element_3.png" },
+      { id: 3, quantity: 5, x: 2, y: 0, image: "/Element_3.png" },
     ],
     selectedItem: null,
     isModalOpen: false,
