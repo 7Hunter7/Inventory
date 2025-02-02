@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { useInventoryStore } from "../store";
+import { useInventoryStore } from "../stores/store.js";
 import { storeToRefs } from "pinia";
 
 const inventoryStore = useInventoryStore();

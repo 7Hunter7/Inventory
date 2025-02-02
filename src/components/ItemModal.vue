@@ -42,7 +42,7 @@
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
-import { useInventoryStore } from "../store";
+import { useInventoryStore } from "../stores/store.js";
 import QuantityModal from "./QuantityModal.vue";
 
 const props = defineProps({

@@ -18,7 +18,7 @@ import SidebarComponent from "./components/SidebarComponent.vue";
 import InventoryGrid from "./components/InventoryGrid.vue";
 import ItemModal from "./components/ItemModal.vue";
 import FooterComponent from "./components/FooterComponent.vue";
-import { useInventoryStore } from "./store";
+import { useInventoryStore } from "./stores/store.js";
 
 const inventoryStore = useInventoryStore();
 

@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { useInventoryStore } from "../store";
+import { useInventoryStore } from "../stores/store.js";
 import { ref } from "vue";
 
 const quantityToRemove = ref(1);
