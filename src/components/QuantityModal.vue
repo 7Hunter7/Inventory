@@ -19,13 +19,19 @@
 
 <script setup>
 import { useInventoryStore } from "../stores/store.js";
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 
 const quantityToRemove = ref(1);
 const inventoryStore = useInventoryStore();
 
 const props = defineProps({
   item: Object,
+  itemModalRef: {
+    type: Object,
+    default: () => {
+      return null;
+    },
+  },
 });
 
 const closeModal = () => {
@@ -39,10 +45,14 @@ const removeItems = () => {
 };
 
 const modalPosition = () => {
+  const itemModalElement = props.itemModalRef?.itemModalRef?.$el;
+  if (!itemModalElement)
+    return { right: 0, bottom: 0, transform: "translate(0, 100%)" };
+  const itemModalRect = itemModalElement.getBoundingClientRect();
   return {
-    right: 0,
+    left: itemModalRect.right + "px",
     bottom: 0,
-    transform: "translate(0, 100%)",
+    transform: "translate(0, 0%)",
   };
 };
 </script>
