@@ -1,5 +1,5 @@
 <template>
-  <aside class="modal" :style="modalPosition">
+  <aside class="modal" :style="modalPosition" ref="itemModalRef">
     <CloseButton class="modal-close" @close="closeModal" ref="itemModalRef" />
     <div class="modal-container">
       <img
@@ -35,8 +35,6 @@ import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";
 
-const itemModalRef = ref(null);
-
 defineExpose({
   itemModalRef,
 });
@@ -56,6 +54,15 @@ const props = defineProps({
 
 const inventoryStore = useInventoryStore();
 
+const itemModalRef = ref(null);
+const isItemModalMounted = ref(false);
+onMounted(() => {
+  isItemModalMounted.value = true;
+});
+const computedItemModalRef = computed(() => {
+  return isItemModalMounted.value ? itemModalRef.value : null;
+});
+
 const closeModal = () => {
   inventoryStore.closeItemModal();
 };
@@ -63,8 +70,9 @@ const closeModal = () => {
 const openQuantityModal = () => {
   inventoryStore.openQuantityModall();
 };
+
 const modalPosition = () => {
-  const gridElement = props.gridRef?.gridRef?.$el;
+  const gridElement = props.gridRef?.computedGridRef?.$el;
   if (!gridElement)
     return { top: "50%", right: "20px", transform: "translateY(-50%)" };
 
