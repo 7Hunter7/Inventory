@@ -97,9 +97,13 @@ const handleEnterClose = (event) => {
   background: rgba(38, 38, 38, 0.6);
   z-index: 10;
   & input[type="number"] {
-    max-width: 250px;
+    max-width: 210px;
     max-height: 40px;
     padding: 8px;
+    border: 1px solid #4d4d4d;
+    border-radius: 4px;
+    background: #262626;
+    color: #fff;
     opacity: 0.4;
   }
 }
