@@ -169,6 +169,7 @@ defineExpose({
   height: 100px;
   cursor: pointer;
   &:hover {
+    background: #2f2f2f;
     cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &.dragging {

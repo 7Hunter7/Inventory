@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SF-Pro-Display-Regular.otf") format("truetype");
+  font-size: 16px;
+}
+
 :root {
   --font-family: "Inter", sans-serif;
   --second-family: "SF Pro Display", sans-serif;
@@ -8,7 +16,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  font-size: 16px;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -53,7 +60,7 @@ body {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 14px;
-  text-align: center;
+  text-align: left;
   color: #fff;
 }
 .button:hover,
@@ -68,8 +75,4 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-/* Для Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
 }
