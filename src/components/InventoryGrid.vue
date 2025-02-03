@@ -19,7 +19,7 @@
           :style="getItemStyle(col - 1, row - 1)"
           @click="openModal(getItem(col - 1, row - 1))"
           draggable="true"
-          @dragstart="handleDragStart(getItem(col - 1, row - 1))"
+          @dragstart="handleDragStart(getItem(col - 1, row - 1), $event)"
           @dragend="handleDragEnd"
         >
           <img
@@ -43,14 +43,15 @@ import { storeToRefs } from "pinia";
 
 const gridRef = ref(null);
 const isGridMounted = ref(false);
+const isDragging = ref(false);
+const isDraggingOver = ref(false);
+
 onMounted(() => {
   isGridMounted.value = true;
 });
 const computedGridRef = computed(() => {
   return isGridMounted.value ? gridRef.value : null;
 });
-
-const isDragging = ref(false);
 const itemWrapperRef = ref(null);
 
 const startDrag = () => {
@@ -61,20 +62,25 @@ const endDrag = () => {
 };
 const handleDragEnd = () => {
   isDragging.value = false;
+  isDraggingOver.value = false;
 };
 
 const inventoryStore = useInventoryStore();
 const { draggedItem } = storeToRefs(inventoryStore);
 
-const handleDragStart = (item) => {
+const handleDragStart = (item, event) => {
+  isDragging.value = true;
   inventoryStore.draggedItem = item;
+  event.dataTransfer.setData("application/json", JSON.stringify(item));
 };
 
 const handleDragOver = (x, y) => {
   inventoryStore.hoveredCell = { x, y };
+  isDraggingOver.value = true;
 };
 
 const handleDrop = (x, y) => {
+  isDraggingOver.value = false;
   if (!draggedItem.value) return;
 
   const existingItem = inventoryStore.items.find(
@@ -138,6 +144,9 @@ defineExpose({
   background: #262626;
   overflow: hidden;
   z-index: 1;
+  &.dragging-over {
+    cursor: url("/icons/cursor-move.cur"), auto;
+  }
   .inventory-row {
     display: flex;
     border-bottom: 1px solid #4d4d4d;
