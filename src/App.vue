@@ -49,6 +49,7 @@ function handleFooterClose() {
 }
 
 body {
+  box-sizing: border-box;
   max-width: 51rem;
   position: relative;
   background-color: black;

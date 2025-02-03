@@ -96,25 +96,24 @@ const openModal = (item) => {
 
 <style lang="scss" scoped>
 .inventory-grid {
-  border: 1px solid #4d4d4d;
-  border-radius: 12px;
-  width: 525px;
-  height: 500px;
-  background: #262626;
   display: flex;
   flex-direction: column;
+  border: 1px solid #4d4d4d;
+  border-radius: 12px;
+  width: 524px;
+  height: 504px;
+  background: #262626;
+  overflow: hidden;
   .inventory-row {
     display: flex;
     border-bottom: 1px solid #4d4d4d;
     width: 100%;
     height: 100px;
     &:last-child {
-      height: 100px;
       border-bottom: none;
     }
   }
   .inventory-cell {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,13 +134,13 @@ const openModal = (item) => {
   justify-content: center;
 }
 .item-image {
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
 }
 .item-count {
   position: absolute;
-  bottom: -27px;
-  right: -29px;
+  top: 60px;
+  left: 62px;
   border: 1px solid #4d4d4d;
   border-radius: 6px 0 0 0;
   width: 16px;
@@ -153,9 +152,5 @@ const openModal = (item) => {
   text-align: center;
   color: #fff;
   opacity: 0.4;
-  &:last-child {
-    bottom: -23px;
-    border-radius: 6px 0 12px 0;
-  }
 }
 </style>
