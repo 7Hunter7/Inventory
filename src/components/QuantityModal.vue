@@ -1,22 +1,21 @@
 <template>
-  <div class="modal-overlay" @click.self="closeModal">
-    <div class="modal" :style="modalPosition">
-      <div class="modal-content">
-        <label for="quantity">Введите количество:</label>
-        <input
-          type="number"
-          id="quantity"
-          v-model.number="quantityToRemove"
-          min="1"
-          :max="item?.quantity"
-        />
-        <div class="modal-buttons">
-          <button @click="closeModal">Отмена</button>
-          <button @click="removeItems">Удалить</button>
-        </div>
+  <aside class="modal" :style="modalPosition">
+    <div class="modal-content">
+      <input
+        type="text"
+        v-model.number="quantityToRemove"
+        min="1"
+        :max="item?.quantity"
+        placeholder="Введите количество"
+      />
+      <div class="modal-buttons">
+        <button class="button close-button" @click="closeModal">Отмена</button>
+        <button class="button delete-button" @click="removeItems">
+          Удалить
+        </button>
       </div>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script setup>
@@ -49,49 +48,40 @@ const modalPosition = () => {
 };
 </script>
 
-<style scoped>
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  z-index: 20;
-}
+<style lang="scss" scoped>
 .modal {
   position: absolute;
-  background: #333;
-  padding: 20px;
-  border-radius: 12px;
-  width: 300px;
+  border: 1px solid #4d4d4d;
+  border-radius: 0 0 12px 0;
+  padding: 20px 21px;
+  backdrop-filter: blur(16px);
+  background: rgba(38, 38, 38, 0.6);
+  &.input[type="text"] {
+    height: 40px;
+    padding: 12px;
+    opacity: 0.4;
+  }
 }
 .modal-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   color: #fff;
 }
 .modal-buttons {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+  justify-content: center;
   gap: 10px;
-}
-.modal-buttons button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #515151;
-  color: #fff;
-  cursor: pointer;
-}
-input[type="number"] {
-  padding: 8px;
-  border: none;
-  background-color: #262626;
-  color: #fff;
+  .close-button {
+    color: #2d2d2d;
+    background: #fff;
+  }
+  .delete-button {
+    background: #fa7272;
+    color: #fff;
+    &:hover {
+      background: #f88;
+    }
+  }
 }
 </style>
