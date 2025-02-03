@@ -1,6 +1,6 @@
 <template>
   <aside class="modal" :style="modalPosition">
-    <CloseButton class="modal-close" @close="closeModal" />
+    <CloseButton class="modal-close" @close="closeModal" ref="itemModalRef" />
     <div class="modal-container">
       <img
         class="modal-image"
@@ -24,6 +24,7 @@
     <QuantityModal
       v-if="inventoryStore.isQuantityModalOpen"
       :item="inventoryStore.selectedItem"
+      :itemModalRef="itemModalRef"
     ></QuantityModal>
   </aside>
 </template>
@@ -33,6 +34,12 @@ import { defineProps, defineEmits } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";
+
+const itemModalRef = ref(null);
+
+defineExpose({
+  itemModalRef,
+});
 
 const props = defineProps({
   blockCount: {
