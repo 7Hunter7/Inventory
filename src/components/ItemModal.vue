@@ -32,14 +32,7 @@
 </template>
 
 <script setup>
-import {
-  defineProps,
-  defineEmits,
-  ref,
-  onMounted,
-  computed,
-  onUnmounted,
-} from "vue";
+import { defineProps, defineEmits, ref, onMounted, onUnmounted } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";
@@ -100,7 +93,7 @@ defineExpose({
 .modal-container {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  right: 0.9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,11 +105,7 @@ defineExpose({
   background: rgba(38, 38, 38, 0.5);
   z-index: 5;
   border: 1px solid #4d4d4d;
-  padding: 55px 15px 18px 15px;
-}
-.modal-close {
-  top: 14px;
-  right: 14px;
+  padding: 53px 15px 17px 15px;
 }
 .modal-image {
   display: flex;
