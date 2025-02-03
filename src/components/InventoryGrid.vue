@@ -50,7 +50,7 @@
       <div
         ref="customDragPreviewCursorRef"
         class="custom-drag-preview-cursor"
-        :style="`background-image: url('${customCursorImage}')`"
+        style="background-image: url('/icons/cursor-move.cur')"
       />
     </div>
   </section>
@@ -65,6 +65,9 @@ const gridRef = ref(null);
 const isGridMounted = ref(false);
 const isDragging = ref(false);
 const isDraggingOver = ref(false);
+const customDragPreviewRef = ref(null);
+const customDragPreviewCursorRef = ref(null);
+const previewItem = ref(null);
 
 onMounted(() => {
   isGridMounted.value = true;
@@ -83,6 +86,7 @@ const endDrag = () => {
 const handleDragEnd = () => {
   isDragging.value = false;
   isDraggingOver.value = false;
+  previewItem.value = null;
 };
 
 const inventoryStore = useInventoryStore();
@@ -91,6 +95,7 @@ const { draggedItem } = storeToRefs(inventoryStore);
 const handleDragStart = (item, event) => {
   isDragging.value = true;
   inventoryStore.draggedItem = item;
+  previewItem.value = item;
   event.dataTransfer.setData("application/json", JSON.stringify(item));
 };
 
@@ -240,7 +245,6 @@ defineExpose({
   padding: 23px 25px;
   border-radius: 12px;
   background: #262626;
-  display: none;
 
   .custom-drag-preview-item-image {
     width: 54px;
@@ -248,12 +252,14 @@ defineExpose({
   }
 
   .custom-drag-preview-cursor {
+    cursor: none;
     position: absolute;
     right: 21px;
     bottom: 20px;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     background-size: contain;
+    background-image: url("/icons/cursor-move.cur");
   }
 }
 </style>

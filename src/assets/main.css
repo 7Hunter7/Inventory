@@ -33,6 +33,9 @@ body {
   padding: 1rem;
   cursor: url("/icons/cursor.cur"), auto;
 }
+.custom-drag-preview {
+  z-index: 100;
+}
 .content {
   display: flex;
   flex-direction: row;
