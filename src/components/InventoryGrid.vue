@@ -1,5 +1,9 @@
 <template>
-  <section class="inventory-grid" ref="gridRef">
+  <section
+    class="inventory-grid"
+    ref="gridRef"
+    @mousemove="updatePreviewPosition"
+  >
     <div v-for="row in 5" :key="row" class="inventory-row">
       <div
         v-for="col in 5"
@@ -32,6 +36,22 @@
           </div>
         </div>
       </div>
+    </div>
+    <div
+      v-if="previewItem"
+      ref="customDragPreviewRef"
+      class="custom-drag-preview"
+    >
+      <img
+        :src="previewItem.image"
+        alt="Item Preview"
+        class="custom-drag-preview-item-image"
+      />
+      <div
+        ref="customDragPreviewCursorRef"
+        class="custom-drag-preview-cursor"
+        :style="`background-image: url('${customCursorImage}')`"
+      />
     </div>
   </section>
 </template>
@@ -128,6 +148,12 @@ const openModal = (item) => {
   inventoryStore.openItemModal();
 };
 
+const updatePreviewPosition = (event) => {
+  if (!customDragPreviewRef.value) return;
+  customDragPreviewRef.value.style.left = `${event.pageX}px`;
+  customDragPreviewRef.value.style.top = `${event.pageY}px`;
+};
+
 defineExpose({
   computedGridRef,
 });
@@ -184,9 +210,6 @@ defineExpose({
   &.dragging {
     cursor: url("/icons/cursor-move.cur"), auto;
   }
-  &.dragging:hover {
-    cursor: url("/icons/cursor-move.cur"), auto;
-  }
 }
 .item-image {
   width: 54px;
@@ -208,5 +231,29 @@ defineExpose({
   text-align: center;
   color: #fff;
   opacity: 0.4;
+}
+
+.custom-drag-preview {
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid #4d4d4d;
+  padding: 23px 25px;
+  border-radius: 12px;
+  background: #262626;
+  display: none;
+
+  .custom-drag-preview-item-image {
+    width: 54px;
+    height: 54px;
+  }
+
+  .custom-drag-preview-cursor {
+    position: absolute;
+    right: 21px;
+    bottom: 20px;
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+  }
 }
 </style>
