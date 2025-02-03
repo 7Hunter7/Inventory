@@ -102,7 +102,8 @@ const emits = defineEmits(["close", "delete"]);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.5rem;
+  width: 130px;
+  height: 130px;
   margin-bottom: 30px;
 }
 .modal-hr {
