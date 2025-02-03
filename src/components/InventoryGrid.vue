@@ -1,9 +1,5 @@
 <template>
-  <section
-    class="inventory-grid"
-    ref="gridRef"
-    @mousemove="updatePreviewPosition"
-  >
+  <section class="inventory-grid" ref="gridRef">
     <div v-for="row in 5" :key="row" class="inventory-row">
       <div
         v-for="col in 5"
@@ -37,22 +33,6 @@
         </div>
       </div>
     </div>
-    <div
-      v-if="previewItem"
-      ref="customDragPreviewRef"
-      class="custom-drag-preview"
-    >
-      <img
-        :src="previewItem.image"
-        alt="Item Preview"
-        class="custom-drag-preview-item-image"
-      />
-      <div
-        ref="customDragPreviewCursorRef"
-        class="custom-drag-preview-cursor"
-        style="background-image: url('/icons/cursor-move.cur')"
-      />
-    </div>
   </section>
 </template>
 
@@ -65,9 +45,6 @@ const gridRef = ref(null);
 const isGridMounted = ref(false);
 const isDragging = ref(false);
 const isDraggingOver = ref(false);
-const customDragPreviewRef = ref(null);
-const customDragPreviewCursorRef = ref(null);
-const previewItem = ref(null);
 
 onMounted(() => {
   isGridMounted.value = true;
@@ -75,8 +52,8 @@ onMounted(() => {
 const computedGridRef = computed(() => {
   return isGridMounted.value ? gridRef.value : null;
 });
-const itemWrapperRef = ref(null);
 
+const itemWrapperRef = ref(null);
 const startDrag = () => {
   isDragging.value = true;
 };
@@ -86,16 +63,13 @@ const endDrag = () => {
 const handleDragEnd = () => {
   isDragging.value = false;
   isDraggingOver.value = false;
-  previewItem.value = null;
 };
 
 const inventoryStore = useInventoryStore();
 const { draggedItem } = storeToRefs(inventoryStore);
-
 const handleDragStart = (item, event) => {
   isDragging.value = true;
   inventoryStore.draggedItem = item;
-  previewItem.value = item;
   event.dataTransfer.setData("application/json", JSON.stringify(item));
 };
 
@@ -106,6 +80,7 @@ const handleDragOver = (x, y) => {
 
 const handleDrop = (x, y) => {
   isDraggingOver.value = false;
+
   if (!draggedItem.value) return;
 
   const existingItem = inventoryStore.items.find(
@@ -151,12 +126,6 @@ const getItemStyle = (x, y) => {
 const openModal = (item) => {
   inventoryStore.setSelectedItem(item);
   inventoryStore.openItemModal();
-};
-
-const updatePreviewPosition = (event) => {
-  if (!customDragPreviewRef.value) return;
-  customDragPreviewRef.value.style.left = `${event.pageX}px`;
-  customDragPreviewRef.value.style.top = `${event.pageY}px`;
 };
 
 defineExpose({
@@ -215,6 +184,9 @@ defineExpose({
   &.dragging {
     cursor: url("/icons/cursor-move.cur"), auto;
   }
+  &.dragging:hover {
+    cursor: url("/icons/cursor-move.cur"), auto;
+  }
 }
 .item-image {
   width: 54px;
@@ -236,30 +208,5 @@ defineExpose({
   text-align: center;
   color: #fff;
   opacity: 0.4;
-}
-
-.custom-drag-preview {
-  position: absolute;
-  pointer-events: none;
-  border: 1px solid #4d4d4d;
-  padding: 23px 25px;
-  border-radius: 12px;
-  background: #262626;
-
-  .custom-drag-preview-item-image {
-    width: 54px;
-    height: 54px;
-  }
-
-  .custom-drag-preview-cursor {
-    cursor: none;
-    position: absolute;
-    right: 21px;
-    bottom: 20px;
-    width: 24px;
-    height: 24px;
-    background-size: contain;
-    background-image: url("/icons/cursor-move.cur");
-  }
 }
 </style>
