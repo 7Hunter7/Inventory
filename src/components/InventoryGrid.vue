@@ -1,5 +1,5 @@
 <template>
-  <section class="inventory-grid">
+  <section class="inventory-grid" ref="gridRef">
     <div v-for="row in 5" :key="row" class="inventory-row">
       <div
         v-for="col in 5"
@@ -40,6 +40,12 @@
 import { ref } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import { storeToRefs } from "pinia";
+
+const gridRef = ref(null);
+
+defineExpose({
+  gridRef,
+});
 
 const isDragging = ref(false);
 const itemWrapperRef = ref(null);
