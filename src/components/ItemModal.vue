@@ -86,7 +86,7 @@ const emits = defineEmits(["close", "delete"]);
   border-radius: 0 12px 12px 0;
   backdrop-filter: blur(16px);
   background: rgba(38, 38, 38, 0.5);
-  z-index: 20;
+  z-index: 5;
   border: 1px solid #4d4d4d;
   padding: 55px 15px 18px 15px;
 }

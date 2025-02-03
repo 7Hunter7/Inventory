@@ -31,6 +31,7 @@ const props = defineProps({
   padding: 18px 14px 24px 14px;
   border-radius: 0.5rem;
   background: #262626;
+  z-index: 1;
 }
 .sidebar-image {
   max-height: 240px;

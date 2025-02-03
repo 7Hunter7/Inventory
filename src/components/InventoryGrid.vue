@@ -104,6 +104,7 @@ const openModal = (item) => {
   height: 504px;
   background: #262626;
   overflow: hidden;
+  z-index: 1;
   .inventory-row {
     display: flex;
     border-bottom: 1px solid #4d4d4d;

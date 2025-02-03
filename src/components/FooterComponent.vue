@@ -31,7 +31,7 @@ defineEmits(["close"]);
   padding: 18px;
   background: #262626;
   color: #fff;
-  z-index: 10;
+  z-index: 1;
 }
 .footer-content {
   width: 100%;

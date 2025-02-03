@@ -2,11 +2,10 @@
   <aside class="modal" :style="modalPosition">
     <div class="modal-content">
       <input
-        type="text"
-        v-model.number="quantityToRemove"
-        min="1"
-        :max="item?.quantity"
+        type="number"
         placeholder="Введите количество"
+        v-model.number="quantityToRemove"
+        :max="item?.quantity"
       />
       <div class="modal-buttons">
         <button class="button close-button" @click="closeModal">Отмена</button>
@@ -51,14 +50,18 @@ const modalPosition = () => {
 <style lang="scss" scoped>
 .modal {
   position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 250px;
+  max-height: 133px;
   border: 1px solid #4d4d4d;
   border-radius: 0 0 12px 0;
   padding: 20px 21px;
   backdrop-filter: blur(16px);
   background: rgba(38, 38, 38, 0.6);
-  &.input[type="text"] {
-    height: 40px;
-    padding: 12px;
+  z-index: 10;
+  & input[type="number"] {
+    padding: 12px 55px 12px 12px;
     opacity: 0.4;
   }
 }
