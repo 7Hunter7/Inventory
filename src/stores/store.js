@@ -58,7 +58,6 @@ export const useInventoryStore = defineStore("inventory", {
     },
     closeQuantityModal() {
       this.isQuantityModalOpen = false;
-      this.selectedItem = null;
     },
   },
 
