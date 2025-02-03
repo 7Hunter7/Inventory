@@ -37,14 +37,21 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import { storeToRefs } from "pinia";
 
 const gridRef = ref(null);
+const isGridMounted = ref(false);
+onMounted(() => {
+  isGridMounted.value = true;
+});
+const computedGridRef = computed(() => {
+  return isGridMounted.value ? gridRef.value : null;
+});
 
 defineExpose({
-  gridRef,
+  computedGridRef,
 });
 
 const isDragging = ref(false);
