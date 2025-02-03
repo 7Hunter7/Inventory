@@ -86,8 +86,8 @@ const handleEnterClose = (event) => {
 <style lang="scss" scoped>
 .modal {
   position: absolute;
-  bottom: 138px;
-  right: 14px;
+  top: 390px;
+  right: 13px;
   max-width: 250px;
   max-height: 133px;
   border: 1px solid #4d4d4d;

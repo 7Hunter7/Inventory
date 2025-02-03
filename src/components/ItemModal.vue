@@ -119,8 +119,8 @@ defineExpose({
 <style lang="scss" scoped>
 .modal-container {
   position: absolute;
-  top: 1rem;
-  right: 0.9rem;
+  top: 0.95rem;
+  right: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
