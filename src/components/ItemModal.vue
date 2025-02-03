@@ -213,6 +213,10 @@ defineExpose({
   margin-top: 24px;
   &:hover {
     opacity: 0.8;
+    cursor: url("/icons/cursor-hover.cur"), auto;
+  }
+  &:active {
+    cursor: url("/icons/cursor-hover.cur"), auto;
   }
 }
 </style>
