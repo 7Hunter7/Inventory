@@ -56,7 +56,9 @@ body {
   text-align: center;
   color: #fff;
 }
+.button:hover,
 .button:active,
+.input:hover,
 .input:active {
   cursor: url("/icons/cursor-hover.cur"), auto;
 }
