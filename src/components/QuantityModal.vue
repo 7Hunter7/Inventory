@@ -13,7 +13,7 @@
             Отмена
           </button>
           <button class="button delete-button" @click="removeItems">
-            Удалить
+            Подтвердить
           </button>
         </div>
       </div>
@@ -72,18 +72,20 @@ const modalPosition = () => {
 <style lang="scss" scoped>
 .modal {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 138px;
+  right: 14px;
   max-width: 250px;
   max-height: 133px;
   border: 1px solid #4d4d4d;
   border-radius: 0 0 12px 0;
-  padding: 20px 21px;
+  padding: 20px 18px;
   backdrop-filter: blur(16px);
   background: rgba(38, 38, 38, 0.6);
   z-index: 10;
   & input[type="number"] {
-    padding: 12px 55px 12px 12px;
+    max-width: 250px;
+    max-height: 40px;
+    padding: 8px;
     opacity: 0.4;
   }
 }
@@ -96,8 +98,10 @@ const modalPosition = () => {
 .modal-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
+  border: none;
   .close-button {
+    padding: 8px 19.5px;
     color: #2d2d2d;
     background: #fff;
     &:hover {
@@ -105,6 +109,7 @@ const modalPosition = () => {
     }
   }
   .delete-button {
+    padding: 8px 15px;
     background: #fa7272;
     color: #fff;
     &:hover {
