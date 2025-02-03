@@ -141,6 +141,12 @@ defineExpose({
   transform: translateX(100%);
   opacity: 0;
 }
+.modal-close {
+  position: absolute;
+  z-index: 10;
+  top: 30px;
+  right: 25px;
+}
 .modal-image {
   display: flex;
   justify-content: center;
