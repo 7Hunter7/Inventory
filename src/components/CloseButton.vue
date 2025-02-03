@@ -23,5 +23,11 @@ defineEmits(["close"]);
   border: none;
   background: none;
   cursor: pointer;
+  &:hover {
+    cursor: url("/icons/cursor.cur"), auto;
+  }
+  &:active {
+    cursor: url("/icons/cursor-hover.cur"), auto;
+  }
 }
 </style>
