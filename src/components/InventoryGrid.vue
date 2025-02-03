@@ -144,8 +144,9 @@ const openModal = (item) => {
   border: 1px solid #4d4d4d;
   border-radius: 6px 0 0 0;
   width: 16px;
-  height: 16px;
+  height: 14px;
   background: #262626;
+  padding-top: 2px;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 10px;
