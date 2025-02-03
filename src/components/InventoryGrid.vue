@@ -50,10 +50,6 @@ const computedGridRef = computed(() => {
   return isGridMounted.value ? gridRef.value : null;
 });
 
-defineExpose({
-  computedGridRef,
-});
-
 const isDragging = ref(false);
 const itemWrapperRef = ref(null);
 
@@ -125,6 +121,10 @@ const openModal = (item) => {
   inventoryStore.setSelectedItem(item);
   inventoryStore.openItemModal();
 };
+
+defineExpose({
+  computedGridRef,
+});
 </script>
 
 <style lang="scss" scoped>
