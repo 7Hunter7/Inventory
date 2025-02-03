@@ -1,43 +1,48 @@
 <template>
-  <aside class="modal" :style="modalPosition" ref="itemModalRef">
-    <CloseButton class="modal-close" @close="closeModal" ref="itemModalRef" />
-    <div class="modal-container">
-      <img
-        class="modal-image"
-        :src="inventoryStore.selectedItem?.image"
-        alt="Item Image"
-      />
-      <div class="modal-content">
-        <div class="modal-hr"></div>
-        <h1 class="modal-title"></h1>
-        <div
-          class="modal-text"
-          v-for="(block, index) in blockCount"
-          :key="index"
-        ></div>
-        <div class="modal-hr"></div>
-        <button class="delete-button" @click="openQuantityModal">
-          Удалить предмет
-        </button>
+  <teleport :to="teleportTarget" v-if="teleportTarget">
+    <aside class="modal" :style="modalPosition">
+      <CloseButton class="modal-close" @close="closeModal" />
+      <div class="modal-container">
+        <img
+          class="modal-image"
+          :src="inventoryStore.selectedItem?.image"
+          alt="Item Image"
+        />
+        <div class="modal-content">
+          <div class="modal-hr"></div>
+          <h1 class="modal-title"></h1>
+          <div
+            class="modal-text"
+            v-for="(block, index) in blockCount"
+            :key="index"
+          ></div>
+          <div class="modal-hr"></div>
+          <button class="delete-button" @click="openQuantityModal">
+            Удалить предмет
+          </button>
+        </div>
       </div>
-    </div>
-    <QuantityModal
-      v-if="inventoryStore.isQuantityModalOpen"
-      :item="inventoryStore.selectedItem"
-      :itemModalRef="itemModalRef"
-    ></QuantityModal>
-  </aside>
+      <QuantityModal
+        v-if="inventoryStore.isQuantityModalOpen"
+        :item="inventoryStore.selectedItem"
+        :itemModalRef="itemModalRef"
+      ></QuantityModal>
+    </aside>
+  </teleport>
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from "vue";
+import {
+  defineProps,
+  defineEmits,
+  ref,
+  onMounted,
+  computed,
+  onUnmounted,
+} from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";
-
-defineExpose({
-  itemModalRef,
-});
 
 const props = defineProps({
   blockCount: {
@@ -53,14 +58,14 @@ const props = defineProps({
 });
 
 const inventoryStore = useInventoryStore();
-
 const itemModalRef = ref(null);
-const isItemModalMounted = ref(false);
+const teleportTarget = ref(null);
+
 onMounted(() => {
-  isItemModalMounted.value = true;
+  teleportTarget.value = document.body; // или другой контейнер
 });
-const computedItemModalRef = computed(() => {
-  return isItemModalMounted.value ? itemModalRef.value : null;
+onUnmounted(() => {
+  teleportTarget.value = null;
 });
 
 const closeModal = () => {
@@ -85,11 +90,15 @@ const modalPosition = () => {
 };
 
 const emits = defineEmits(["close", "delete"]);
+
+defineExpose({
+  itemModalRef,
+});
 </script>
 
 <style lang="scss" scoped>
 .modal-container {
-  position: relative;
+  position: absolute;
   top: 1rem;
   right: 1rem;
   display: flex;
@@ -106,7 +115,6 @@ const emits = defineEmits(["close", "delete"]);
   padding: 55px 15px 18px 15px;
 }
 .modal-close {
-  position: absolute;
   top: 14px;
   right: 14px;
 }
