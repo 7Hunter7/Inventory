@@ -1,18 +1,6 @@
 <template>
   <aside class="modal" :style="modalPosition">
-    <button class="close-button" @click="closeModal">
-      <svg
-        width="12"
-        height="12"
-        viewBox="0 0 12 12"
-        fill="white"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12 1.05L10.95 0L6 4.95L1.05 0L0 1.05L4.95 6L0 10.95L1.05 12L6 7.05L10.95 12L12 10.95L7.05 6L12 1.05Z"
-        />
-      </svg>
-    </button>
+    <CloseButton class="modal-close" @close="closeModal" />
     <div class="modal-container">
       <img
         class="modal-image"
@@ -33,16 +21,17 @@
         </button>
       </div>
     </div>
-    <quantity-modal
+    <QuantityModal
       v-if="inventoryStore.isQuantityModalOpen"
       :item="inventoryStore.selectedItem"
-    ></quantity-modal>
+    ></QuantityModal>
   </aside>
 </template>
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
 import { useInventoryStore } from "../stores/store.js";
+import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";
 
 const props = defineProps({
@@ -90,13 +79,10 @@ const emits = defineEmits(["close", "delete"]);
   border: 1px solid #4d4d4d;
   padding: 55px 15px 18px 15px;
 }
-.close-button {
+.modal-close {
   position: absolute;
   top: 14px;
   right: 14px;
-  border: none;
-  background: none;
-  cursor: pointer;
 }
 .modal-image {
   display: flex;
