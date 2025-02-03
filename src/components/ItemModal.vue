@@ -39,6 +39,12 @@ const props = defineProps({
     type: Number,
     default: 6,
   },
+  gridRef: {
+    type: Object,
+    default: () => {
+      return null;
+    },
+  },
 });
 
 const inventoryStore = useInventoryStore();
@@ -51,9 +57,14 @@ const openQuantityModal = () => {
   inventoryStore.openQuantityModall();
 };
 const modalPosition = () => {
+  const gridElement = props.gridRef?.gridRef?.$el;
+  if (!gridElement)
+    return { top: "50%", right: "20px", transform: "translateY(-50%)" };
+
+  const gridRect = gridElement.getBoundingClientRect();
   return {
     top: "50%",
-    right: "calc(100% - 525px - 20px)",
+    left: gridRect.right + "px", // Расположение справа
     transform: "translateY(-50%)",
   };
 };
