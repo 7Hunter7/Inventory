@@ -34,6 +34,14 @@ const props = defineProps({
   },
 });
 
+const isQuantityModalMounted = ref(false);
+onMounted(() => {
+  isQuantityModalMounted.value = true;
+});
+const computedItemModalRef = computed(() => {
+  return isQuantityModalMounted.value ? props.itemModalRef : null;
+});
+
 const closeModal = () => {
   inventoryStore.closeQuantityModal();
 };
@@ -45,7 +53,7 @@ const removeItems = () => {
 };
 
 const modalPosition = () => {
-  const itemModalElement = props.itemModalRef?.itemModalRef?.$el;
+  const itemModalElement = computedItemModalRef.value?.itemModalRef?.$el;
   if (!itemModalElement)
     return { right: 0, bottom: 0, transform: "translate(0, 100%)" };
   const itemModalRect = itemModalElement.getBoundingClientRect();
