@@ -56,6 +56,10 @@ body {
   text-align: center;
   color: #fff;
 }
+.button:active,
+.input:active {
+  cursor: url("/icons/cursor-hover.cur"), auto;
+}
 /* Скрытие спиннеров для поля <input type="number"> */
 /* Для Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
