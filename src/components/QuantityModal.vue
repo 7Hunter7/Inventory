@@ -1,27 +1,31 @@
 <template>
-  <aside class="modal" :style="modalPosition">
-    <div class="modal-content">
-      <input
-        type="number"
-        placeholder="Введите количество"
-        v-model.number="quantityToRemove"
-        :max="item?.quantity"
-      />
-      <div class="modal-buttons">
-        <button class="button close-button" @click="closeModal">Отмена</button>
-        <button class="button delete-button" @click="removeItems">
-          Удалить
-        </button>
+  <teleport :to="teleportTarget" v-if="teleportTarget">
+    <aside class="modal" :style="modalPosition">
+      <div class="modal-content">
+        <input
+          type="number"
+          placeholder="Введите количество"
+          v-model.number="quantityToRemove"
+          :max="item?.quantity"
+        />
+        <div class="modal-buttons">
+          <button class="button close-button" @click="closeModal">
+            Отмена
+          </button>
+          <button class="button delete-button" @click="removeItems">
+            Удалить
+          </button>
+        </div>
       </div>
-    </div>
-  </aside>
+    </aside>
+  </teleport>
 </template>
 
 <script setup>
 import { useInventoryStore } from "../stores/store.js";
-import { ref, defineProps } from "vue";
+import { ref, defineProps, onMounted, computed, onUnmounted } from "vue";
 
-const quantityToRemove = ref(1);
+const quantityToRemove = ref(null);
 const inventoryStore = useInventoryStore();
 
 const props = defineProps({
@@ -34,12 +38,12 @@ const props = defineProps({
   },
 });
 
-const isQuantityModalMounted = ref(false);
+const teleportTarget = ref(null);
 onMounted(() => {
-  isQuantityModalMounted.value = true;
+  teleportTarget.value = document.body; // или другой контейнер
 });
-const computedItemModalRef = computed(() => {
-  return isQuantityModalMounted.value ? props.itemModalRef : null;
+onUnmounted(() => {
+  teleportTarget.value = null;
 });
 
 const closeModal = () => {
@@ -53,7 +57,7 @@ const removeItems = () => {
 };
 
 const modalPosition = () => {
-  const itemModalElement = computedItemModalRef.value?.itemModalRef?.$el;
+  const itemModalElement = props.itemModalRef?.itemModalRef?.$el;
   if (!itemModalElement)
     return { right: 0, bottom: 0, transform: "translate(0, 100%)" };
   const itemModalRect = itemModalElement.getBoundingClientRect();
