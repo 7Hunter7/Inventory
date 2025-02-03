@@ -41,8 +41,10 @@ const props = defineProps({
 const teleportTarget = ref(null);
 onMounted(() => {
   teleportTarget.value = document.body; // или другой контейнер
+  window.addEventListener("keydown", handleEnterClose);
 });
 onUnmounted(() => {
+  window.removeEventListener("keydown", handleEnterClose);
   teleportTarget.value = null;
 });
 
@@ -66,6 +68,18 @@ const modalPosition = () => {
     bottom: 0,
     transform: "translate(0, 0%)",
   };
+};
+
+const handleEnterClose = (event) => {
+  if (event.key === "Enter") {
+    if (
+      inventoryStore.isQuantityModalOpen &&
+      quantityToRemove.value !== null &&
+      quantityToRemove.value > 0
+    ) {
+      removeItems();
+    }
+  }
 };
 </script>
 
