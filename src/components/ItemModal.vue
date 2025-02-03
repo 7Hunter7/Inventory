@@ -1,6 +1,12 @@
 <template>
   <teleport :to="teleportTarget" v-if="teleportTarget">
-    <aside class="modal" :style="modalPosition">
+    <aside
+      class="modal"
+      :class="{ 'modal-enter': isEntering }"
+      :style="modalPosition"
+      ref="itemModalRef"
+      @transitionend="onTransitionEnd"
+    >
       <CloseButton class="modal-close" @close="closeModal" />
       <div class="modal-container">
         <img
@@ -32,7 +38,14 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, onMounted, onUnmounted } from "vue";
+import {
+  defineProps,
+  defineEmits,
+  ref,
+  onMounted,
+  onUnmounted,
+  watch,
+} from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";
@@ -55,12 +68,26 @@ const itemModalRef = ref(null);
 const teleportTarget = ref(null);
 
 onMounted(() => {
-  teleportTarget.value = document.body; // или другой контейнер
+  teleportTarget.value = document.body;
 });
 onUnmounted(() => {
   teleportTarget.value = null;
 });
 
+const isEntering = ref(false);
+watch(
+  () => inventoryStore.isItemModalOpen,
+  (newValue) => {
+    if (newValue) {
+      isEntering.value = true;
+    }
+  }
+);
+const onTransitionEnd = () => {
+  if (!inventoryStore.isItemModalOpen) {
+    isEntering.value = false;
+  }
+};
 const closeModal = () => {
   inventoryStore.closeItemModal();
 };
@@ -103,9 +130,16 @@ defineExpose({
   border-radius: 0 12px 12px 0;
   backdrop-filter: blur(16px);
   background: rgba(38, 38, 38, 0.5);
-  z-index: 5;
   border: 1px solid #4d4d4d;
   padding: 53px 15px 17px 15px;
+  z-index: 5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(0);
+  opacity: 1;
+}
+.modal-enter {
+  transform: translateX(100%);
+  opacity: 0;
 }
 .modal-image {
   display: flex;
