@@ -216,7 +216,7 @@ defineExpose({
     cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &:active {
-    cursor: url("/icons/cursor-hover.cur"), auto;
+    cursor: url("/icons/cursor-move.cur"), auto;
   }
 }
 </style>

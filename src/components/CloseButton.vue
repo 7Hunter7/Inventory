@@ -1,5 +1,5 @@
 <template>
-  <button class="close-button" @click="$emit('close')">
+  <button class="button close-button" @click="$emit('close')">
     <svg
       width="12"
       height="12"
@@ -24,10 +24,10 @@ defineEmits(["close"]);
   background: none;
   cursor: pointer;
   &:hover {
-    cursor: url("/icons/cursor.cur"), auto;
+    cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &:active {
-    cursor: url("/icons/cursor-hover.cur"), auto;
+    cursor: url("/icons/cursor-move.cur"), auto;
   }
 }
 </style>

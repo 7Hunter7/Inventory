@@ -67,11 +67,14 @@ body {
   color: #fff;
 }
 .button:hover,
-.button:active,
-.input:hover,
-.input:active {
+.input:hover {
   cursor: url("/icons/cursor-hover.cur"), auto;
 }
+.button:active,
+.input:active {
+  cursor: url("/icons/cursor-move.cur"), auto;
+}
+
 /* Скрытие спиннеров для поля <input type="number"> */
 /* Для Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
