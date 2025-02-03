@@ -24,6 +24,7 @@ body {
   background-color: black;
   margin: 0 auto;
   padding: 1rem;
+  cursor: url("/icons/cursor.cur"), auto;
 }
 .content {
   display: flex;

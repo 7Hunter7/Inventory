@@ -11,6 +11,10 @@
         <div
           v-if="hasItem(col - 1, row - 1)"
           class="item-wrapper"
+          :class="{ dragging: isDragging }"
+          @mousedown="startDrag()"
+          @mouseup="endDrag()"
+          @mouseleave="endDrag()"
           :style="getItemStyle(col - 1, row - 1)"
           @click="openModal(getItem(col - 1, row - 1))"
           draggable="true"
@@ -31,8 +35,19 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import { storeToRefs } from "pinia";
+
+const isDragging = ref(false);
+
+const startDrag = () => {
+  isDragging.value = true;
+};
+
+const endDrag = () => {
+  isDragging.value = false;
+};
 
 const inventoryStore = useInventoryStore();
 const { draggedItem } = storeToRefs(inventoryStore);
@@ -129,10 +144,18 @@ const openModal = (item) => {
 }
 .item-wrapper {
   position: relative;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 104px;
+  height: 100px;
+  cursor: pointer;
+  &:hover {
+    cursor: url("/icons/cursor-hover.cur"), auto; /* Состояние наведения */
+  }
+  &.dragging {
+    cursor: url("/icons/cursor-move.cur"), auto; /* Состояние перетаскивания */
+  }
 }
 .item-image {
   width: 54px;
@@ -140,8 +163,8 @@ const openModal = (item) => {
 }
 .item-count {
   position: absolute;
-  top: 60px;
-  left: 62px;
+  bottom: -1px;
+  right: -1px;
   border: 1px solid #4d4d4d;
   border-radius: 6px 0 0 0;
   width: 16px;
