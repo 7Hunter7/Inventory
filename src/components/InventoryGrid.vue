@@ -10,15 +10,17 @@
       >
         <div
           v-if="hasItem(col - 1, row - 1)"
+          ref="itemWrapperRef"
           class="item-wrapper"
           :class="{ dragging: isDragging }"
-          @mousedown="startDrag()"
-          @mouseup="endDrag()"
-          @mouseleave="endDrag()"
+          @mousedown="startDrag"
+          @mouseup="endDrag"
+          @mouseleave="endDrag"
           :style="getItemStyle(col - 1, row - 1)"
           @click="openModal(getItem(col - 1, row - 1))"
           draggable="true"
           @dragstart="handleDragStart(getItem(col - 1, row - 1))"
+          @dragend="handleDragEnd"
         >
           <img
             class="item-image"
@@ -40,12 +42,15 @@ import { useInventoryStore } from "../stores/store.js";
 import { storeToRefs } from "pinia";
 
 const isDragging = ref(false);
+const itemWrapperRef = ref(null);
 
 const startDrag = () => {
   isDragging.value = true;
 };
-
 const endDrag = () => {
+  isDragging.value = false;
+};
+const handleDragEnd = () => {
   isDragging.value = false;
 };
 
@@ -151,10 +156,13 @@ const openModal = (item) => {
   height: 100px;
   cursor: pointer;
   &:hover {
-    cursor: url("/icons/cursor-hover.cur"), auto; /* Состояние наведения */
+    cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &.dragging {
-    cursor: url("/icons/cursor-move.cur"), auto; /* Состояние перетаскивания */
+    cursor: url("/icons/cursor-move.cur"), auto;
+  }
+  &.dragging:hover {
+    cursor: url("/icons/cursor-move.cur"), auto;
   }
 }
 .item-image {

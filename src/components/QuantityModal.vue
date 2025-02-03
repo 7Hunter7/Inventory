@@ -78,6 +78,9 @@ const modalPosition = () => {
   .close-button {
     color: #2d2d2d;
     background: #fff;
+    &:hover {
+      background: #faf8f8dc;
+    }
   }
   .delete-button {
     background: #fa7272;
