@@ -16,9 +16,9 @@ defineEmits(["close"]);
 <style lang="scss" scoped>
 .footer {
   border: 1px solid #4d4d4d;
-  border-radius: 12px;
-  width: 750px;
-  padding: 18px;
+  border-radius: 0.75rem;
+  width: 49rem;
+  padding: 1.125rem;
   background: #262626;
   color: #fff;
   z-index: 1;
@@ -33,7 +33,7 @@ defineEmits(["close"]);
 .search-box {
   flex: 1;
   height: 2.25rem;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
 }
 </style>
