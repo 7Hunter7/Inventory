@@ -2,12 +2,12 @@
   <teleport :to="teleportTarget" v-if="teleportTarget">
     <aside
       class="modal"
-      :class="{ 'modal-enter': isEntering }"
+      :class="{ 'modal-exit': isExiting }"
       :style="modalPosition"
       ref="itemModalRef"
       @transitionend="onTransitionEnd"
     >
-      <CloseButton class="modal-close" @close="closeModal" />
+      <CloseButton class="modal-close" @close="onAnimationEnd" />
       <div class="modal-container">
         <img
           class="modal-image"
@@ -66,6 +66,7 @@ const props = defineProps({
 const inventoryStore = useInventoryStore();
 const itemModalRef = ref(null);
 const teleportTarget = ref(null);
+const isExiting = ref(false);
 
 onMounted(() => {
   teleportTarget.value = document.body;
@@ -74,19 +75,11 @@ onUnmounted(() => {
   teleportTarget.value = null;
 });
 
-const isEntering = ref(false);
-watch(
-  () => inventoryStore.isItemModalOpen,
-  (newValue) => {
-    if (newValue) {
-      isEntering.value = true;
-    }
-  }
-);
-const onTransitionEnd = () => {
-  if (!inventoryStore.isItemModalOpen) {
-    isEntering.value = false;
-  }
+const onAnimationEnd = () => {
+  isExiting.value = true;
+  setTimeout(() => {
+    closeModal();
+  }, 500);
 };
 const closeModal = () => {
   inventoryStore.closeItemModal();
@@ -117,10 +110,19 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.modal-container {
+.modal {
   position: absolute;
   top: 2rem;
   right: 0.8rem;
+  z-index: 5;
+  transform: translateX(0);
+  opacity: 1;
+  animation: slideIn 0.4s ease forwards;
+  &.modal-exit {
+    animation: slideOut 0.3s ease forwards;
+  }
+}
+.modal-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -132,20 +134,12 @@ defineExpose({
   background: rgba(38, 38, 38, 0.5);
   border: 1px solid #4d4d4d;
   padding: 3.3rem 0.9rem 1rem 0.9rem;
-  z-index: 5;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: translateX(0);
-  opacity: 1;
-}
-.modal-enter {
-  transform: translateX(100%);
-  opacity: 0;
 }
 .modal-close {
   position: absolute;
   z-index: 10;
-  top: 3rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
 }
 .modal-image {
   display: flex;
@@ -209,6 +203,28 @@ defineExpose({
   }
   &:active {
     background: #fa7272;
+  }
+}
+
+// Анимациии для Модального окна
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
 </style>
