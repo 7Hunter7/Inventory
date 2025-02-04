@@ -7,7 +7,7 @@
       ref="itemModalRef"
       @transitionend="onTransitionEnd"
     >
-      <CloseButton class="modal-close" @close="onAnimationEnd" />
+      <CloseButton class="modal-close" @close="closeModal" />
       <div class="modal-container">
         <img
           class="modal-image"
@@ -38,14 +38,7 @@
 </template>
 
 <script setup>
-import {
-  defineProps,
-  defineEmits,
-  ref,
-  onMounted,
-  onUnmounted,
-  watch,
-} from "vue";
+import { defineProps, defineEmits, ref, onMounted, onUnmounted } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";
@@ -75,14 +68,11 @@ onUnmounted(() => {
   teleportTarget.value = null;
 });
 
-const onAnimationEnd = () => {
+const closeModal = () => {
   isExiting.value = true;
   setTimeout(() => {
-    closeModal();
+    inventoryStore.closeItemModal();
   }, 300);
-};
-const closeModal = () => {
-  inventoryStore.closeItemModal();
 };
 
 const openQuantityModal = () => {
@@ -197,5 +187,27 @@ defineExpose({
   margin-top: 1.5rem;
   width: 100%;
   padding: 0.7rem;
+}
+
+/* Анимациии для Модального окна */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 </style>
