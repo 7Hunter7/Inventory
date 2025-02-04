@@ -21,20 +21,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 1.5rem;
 }
-
 body {
   box-sizing: border-box;
   max-width: 51rem;
   position: relative;
-  background-color: black;
+  background: #1d1d1d;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
   cursor: url("/icons/cursor.cur"), auto;
-}
-.custom-drag-preview {
-  z-index: 100;
 }
 .content {
   display: flex;
@@ -43,20 +39,22 @@ body {
   justify-content: space-around;
   flex-wrap: nowrap;
   align-content: center;
-  gap: 24px;
+  gap: 1.5rem;
 }
 .inventory-wrapper {
   display: flex;
-  gap: 20px;
+  gap: 1.5rem;
 }
 .button {
-  border-radius: 8px;
-  padding: 8px 28px;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.75rem;
   font-family: var(--second-family);
   font-weight: 400;
   font-size: 14px;
+  text-align: center;
   color: #fff;
-  backdrop-filter: blur(16px);
+  border: none;
+  backdrop-filter: blur(1rem);
   cursor: pointer;
 }
 .input {
