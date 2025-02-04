@@ -64,7 +64,9 @@ const closeModal = () => {
 const removeItems = () => {
   inventoryStore.removeItem(props.item.id, quantityToRemove.value);
   closeModal();
-  inventoryStore.closeItemModal();
+  setTimeout(() => {
+    inventoryStore.closeItemModal();
+  }, 300);
 };
 
 const modalPosition = () => {
