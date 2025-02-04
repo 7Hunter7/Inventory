@@ -138,7 +138,7 @@ defineExpose({
   display: flex;
   flex-direction: column;
   border: 1px solid #4d4d4d;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   width: 32.75rem;
   height: 31.5rem;
   background: #262626;
