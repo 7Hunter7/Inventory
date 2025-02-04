@@ -197,34 +197,5 @@ defineExpose({
   margin-top: 1.5rem;
   width: 100%;
   padding: 0.7rem;
-  background: #fa7272;
-  &:hover {
-    background: #f88;
-  }
-  &:active {
-    background: #fa7272;
-  }
-}
-
-// Анимациии для Модального окна
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
 }
 </style>
