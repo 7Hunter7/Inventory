@@ -139,8 +139,8 @@ defineExpose({
   flex-direction: column;
   border: 1px solid #4d4d4d;
   border-radius: 12px;
-  width: 524px;
-  height: 504px;
+  width: 32.75rem;
+  height: 31.5rem;
   background: #262626;
   overflow: hidden;
   z-index: 1;
@@ -151,7 +151,7 @@ defineExpose({
     display: flex;
     border-bottom: 1px solid #4d4d4d;
     width: 100%;
-    height: 100px;
+    height: 6.25rem;
     &:last-child {
       border-bottom: none;
     }
@@ -160,11 +160,10 @@ defineExpose({
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 105px;
-    height: 100px;
+    height: 6.25rem;
+    width: 6.5rem;
     border-right: 1px solid #4d4d4d;
     &:last-child {
-      height: 100px;
       border-right: none;
     }
   }
@@ -174,8 +173,8 @@ defineExpose({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 104px;
-  height: 100px;
+  width: 6.5rem;
+  height: 6.25rem;
   cursor: pointer;
   &:hover {
     background: #2f2f2f;
@@ -189,23 +188,22 @@ defineExpose({
   }
 }
 .item-image {
-  width: 54px;
-  height: 54px;
+  width: 3.375rem;
+  height: 3.375rem;
 }
 .item-count {
   position: absolute;
-  bottom: -1px;
-  right: -1px;
+  bottom: 0;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
   border: 1px solid #4d4d4d;
-  border-radius: 6px 0 0 0;
-  width: 16px;
-  height: 14px;
+  border-radius: 0.375rem 0 0 0;
   background: #262626;
-  padding-top: 2px;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 10px;
-  text-align: center;
+  font-size: 0.625rem;
+  line-height: 1rem;
   color: #fff;
   opacity: 0.4;
 }
