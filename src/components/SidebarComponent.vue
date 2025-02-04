@@ -25,16 +25,16 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .sidebar {
-  max-width: 236px;
+  max-width: 14.75rem;
   border-radius: 1rem;
   border: 1px solid #4d4d4d;
-  padding: 18px 14px 24px 14px;
+  padding: 1.125rem 0.875rem 1.5rem 0.875rem;
   border-radius: 0.5rem;
   background: #262626;
   z-index: 1;
 }
 .sidebar-image {
-  max-height: 240px;
+  height: 15rem;
   border-radius: 0.5rem;
 }
 .sidebar-content {
@@ -43,14 +43,14 @@ const props = defineProps({
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0 10px 0 10px;
+  padding: 0 0.625rem 0 0.625rem;
 }
 .sidebar-title {
-  margin-top: 20px;
-  margin-bottom: 24px;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
   border-radius: 0.5rem;
   width: 100%;
-  height: 26px;
+  height: 1.625rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
 }
 /* Текстовые блоки */
@@ -61,23 +61,23 @@ const props = defineProps({
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
 
   &:nth-child(2) {
-    width: 155px;
+    width: 9.6875rem;
   }
   &:nth-child(3) {
-    width: 190px;
+    width: 11.875rem;
   }
   &:nth-child(4) {
-    width: 170px;
+    width: 10.625rem;
   }
   &:nth-child(5) {
-    width: 160px;
+    width: 10rem;
   }
   &:nth-child(6) {
-    width: 140px;
+    width: 8.75rem;
   }
   &:last-child {
-    margin-top: 14px;
-    width: 80px;
+    margin-top: 0.875rem;
+    width: 5rem;
     margin-bottom: 0;
   }
 }
