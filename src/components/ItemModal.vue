@@ -79,7 +79,7 @@ const onAnimationEnd = () => {
   isExiting.value = true;
   setTimeout(() => {
     closeModal();
-  }, 500);
+  }, 300);
 };
 const closeModal = () => {
   inventoryStore.closeItemModal();
