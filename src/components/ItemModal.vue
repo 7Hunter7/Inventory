@@ -23,7 +23,7 @@
             :key="index"
           ></div>
           <div class="modal-hr"></div>
-          <button class="delete-button" @click="openQuantityModal">
+          <button class="button delete-button" @click="openQuantityModal">
             Удалить предмет
           </button>
         </div>
@@ -119,19 +119,19 @@ defineExpose({
 <style lang="scss" scoped>
 .modal-container {
   position: absolute;
-  top: 0.95rem;
+  top: 2rem;
   right: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  max-width: 250px;
+  max-width: 15.625rem;
   border: solid #4d4d4d;
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 0.75rem 0.75rem 0;
   backdrop-filter: blur(16px);
   background: rgba(38, 38, 38, 0.5);
   border: 1px solid #4d4d4d;
-  padding: 53px 15px 17px 15px;
+  padding: 3.3rem 0.9rem 1rem 0.9rem;
   z-index: 5;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform: translateX(0);
@@ -144,19 +144,19 @@ defineExpose({
 .modal-close {
   position: absolute;
   z-index: 10;
-  top: 30px;
-  right: 25px;
+  top: 3rem;
+  right: 1.5rem;
 }
 .modal-image {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 130px;
-  height: 130px;
-  margin-bottom: 30px;
+  width: 8.125rem;
+  height: 8.125rem;
+  margin-bottom: 1.875rem;
 }
 .modal-hr {
-  width: 210px;
+  width: 13.125rem;
   height: 1px;
   background: #4d4d4d;
 }
@@ -192,25 +192,18 @@ defineExpose({
     width: 100%;
   }
   &:nth-child(6) {
-    width: 180px;
+    width: 11.25rem;
   }
   &:nth-child(7) {
-    width: 80px;
+    width: 5rem;
     margin-bottom: 0;
   }
 }
 .delete-button {
+  margin-top: 1.5rem;
   width: 100%;
+  padding: 0.7rem;
   background: #fa7272;
-  font-weight: 400;
-  font-size: 14px;
-  text-align: center;
-  color: #fff;
-  padding: 11px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 24px;
   &:hover {
     opacity: 0.8;
     cursor: url("/icons/cursor-hover.cur"), auto;
