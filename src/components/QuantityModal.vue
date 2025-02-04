@@ -1,6 +1,10 @@
 <template>
   <teleport :to="teleportTarget" v-if="teleportTarget">
-    <aside class="modal" :style="modalPosition">
+    <aside
+      class="modal"
+      :class="{ 'modal-exit': isExiting }"
+      :style="modalPosition"
+    >
       <div class="modal-content">
         <input
           type="number"
@@ -23,7 +27,7 @@
 
 <script setup>
 import { useInventoryStore } from "../stores/store.js";
-import { ref, defineProps, onMounted, computed, onUnmounted } from "vue";
+import { ref, defineProps, onMounted, onUnmounted } from "vue";
 
 const quantityToRemove = ref(null);
 const inventoryStore = useInventoryStore();
@@ -39,6 +43,8 @@ const props = defineProps({
 });
 
 const teleportTarget = ref(null);
+const isExiting = ref(false);
+
 onMounted(() => {
   teleportTarget.value = document.body; // или другой контейнер
   window.addEventListener("keydown", handleEnterClose);
@@ -49,7 +55,10 @@ onUnmounted(() => {
 });
 
 const closeModal = () => {
-  inventoryStore.closeQuantityModal();
+  isExiting.value = true;
+  setTimeout(() => {
+    inventoryStore.closeQuantityModal();
+  }, 300);
 };
 
 const removeItems = () => {
@@ -96,6 +105,11 @@ const handleEnterClose = (event) => {
   backdrop-filter: blur(1rem);
   background: rgba(38, 38, 38, 0.6);
   z-index: 10;
+  opacity: 1;
+  animation: slideIn 0.4s ease forwards;
+  &.modal-exit {
+    animation: slideOut 0.3s ease forwards;
+  }
   & input[type="number"] {
     padding: 0.5rem;
     border: 1px solid #4d4d4d;
@@ -120,7 +134,7 @@ const handleEnterClose = (event) => {
     padding: 0.5rem 1.2rem;
     color: #2d2d2d;
     background: #fff;
-    transition: opacity 0.2s ease-in;
+    transition: opacity 0.3s ease;
     &:hover {
       opacity: 0.8;
     }
@@ -130,15 +144,28 @@ const handleEnterClose = (event) => {
   }
   .delete-button {
     padding: 0.5rem 0.9375rem;
-    background: #fa7272;
-    color: #fff;
-    transition: background-color 0.2s ease-in;
-    &:hover {
-      background: #f88;
-    }
-    &:active {
-      background: #fa7272;
-    }
+  }
+}
+
+/* Анимациии для Модального окна */
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
   }
 }
 </style>
