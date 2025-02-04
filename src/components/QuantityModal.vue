@@ -86,22 +86,20 @@ const handleEnterClose = (event) => {
 <style lang="scss" scoped>
 .modal {
   position: absolute;
-  top: 390px;
-  right: 13px;
-  max-width: 250px;
-  max-height: 133px;
+  top: 25.65rem;
+  right: 0.8rem;
+  max-width: 15.625rem;
+  max-height: 8.3125rem;
   border: 1px solid #4d4d4d;
-  border-radius: 0 0 12px 0;
-  padding: 20px 18px;
-  backdrop-filter: blur(16px);
+  border-radius: 0 0 0.75rem 0;
+  padding: 1.25rem 1.3rem;
+  backdrop-filter: blur(1rem);
   background: rgba(38, 38, 38, 0.6);
   z-index: 10;
   & input[type="number"] {
-    max-width: 210px;
-    max-height: 40px;
-    padding: 8px;
+    padding: 0.5rem;
     border: 1px solid #4d4d4d;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     background: #262626;
     color: #fff;
     opacity: 0.4;
@@ -110,16 +108,16 @@ const handleEnterClose = (event) => {
 .modal-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   color: #fff;
 }
 .modal-buttons {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   border: none;
   .close-button {
-    padding: 8px 19.5px;
+    padding: 0.5rem 1.2rem;
     color: #2d2d2d;
     background: #fff;
     &:hover {
@@ -127,7 +125,7 @@ const handleEnterClose = (event) => {
     }
   }
   .delete-button {
-    padding: 8px 15px;
+    padding: 0.5rem 0.9375rem;
     background: #fa7272;
     color: #fff;
     &:hover {
