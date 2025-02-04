@@ -23,11 +23,16 @@ defineEmits(["close"]);
   border: none;
   background: none;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+  &:hover,
+  &:active {
+    cursor: url("/icons/cursor.cur"), auto;
+  }
   &:hover {
-    cursor: url("/icons/cursor-hover.cur"), auto;
+    opacity: 0.8;
   }
   &:active {
-    cursor: url("/icons/cursor-move.cur"), auto;
+    opacity: 0.6;
   }
 }
 </style>

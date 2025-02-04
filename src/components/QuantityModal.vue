@@ -120,12 +120,12 @@ const handleEnterClose = (event) => {
     padding: 0.5rem 1.2rem;
     color: #2d2d2d;
     background: #fff;
-    transition: background-color 0.2s ease-in;
+    transition: opacity 0.2s ease-in;
     &:hover {
-      background: #faf8f8dc;
+      opacity: 0.8;
     }
     &:active {
-      background: #fff;
+      opacity: 0.6;
     }
   }
   .delete-button {

@@ -17,7 +17,7 @@ defineEmits(["close"]);
 .footer {
   border: 1px solid #4d4d4d;
   border-radius: 0.75rem;
-  width: 49rem;
+  width: 47rem;
   padding: 1.125rem;
   background: #262626;
   color: #fff;

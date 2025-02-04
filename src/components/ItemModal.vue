@@ -206,11 +206,9 @@ defineExpose({
   background: #fa7272;
   &:hover {
     background: #f88;
-    cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &:active {
     background: #fa7272;
-    cursor: url("/icons/cursor-move.cur"), auto;
   }
 }
 </style>
