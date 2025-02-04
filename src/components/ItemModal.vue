@@ -128,7 +128,7 @@ defineExpose({
   max-width: 15.625rem;
   border: solid #4d4d4d;
   border-radius: 0 0.75rem 0.75rem 0;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(1rem);
   background: rgba(38, 38, 38, 0.5);
   border: 1px solid #4d4d4d;
   padding: 3.3rem 0.9rem 1rem 0.9rem;
@@ -166,14 +166,14 @@ defineExpose({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 5px;
+  padding: 0 0.3rem;
 }
 .modal-title {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
   border-radius: 0.5rem;
   width: 100%;
-  height: 30px;
+  height: 1.875rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
 }
 /* Текстовые блоки */
@@ -205,10 +205,11 @@ defineExpose({
   padding: 0.7rem;
   background: #fa7272;
   &:hover {
-    opacity: 0.8;
+    background: #f88;
     cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &:active {
+    background: #fa7272;
     cursor: url("/icons/cursor-move.cur"), auto;
   }
 }
