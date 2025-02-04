@@ -115,6 +115,8 @@ defineExpose({
   top: 2rem;
   right: 0.8rem;
   z-index: 5;
+  backdrop-filter: blur(1rem);
+  background: rgba(38, 38, 38, 0.5);
   transform: translateX(0);
   opacity: 1;
   animation: slideIn 0.4s ease forwards;
@@ -130,8 +132,6 @@ defineExpose({
   max-width: 15.625rem;
   border: solid #4d4d4d;
   border-radius: 0 0.75rem 0.75rem 0;
-  backdrop-filter: blur(1rem);
-  background: rgba(38, 38, 38, 0.5);
   border: 1px solid #4d4d4d;
   padding: 3.3rem 0.9rem 1rem 0.9rem;
 }
