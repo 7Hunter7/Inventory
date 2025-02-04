@@ -45,6 +45,13 @@ body {
   display: flex;
   gap: 1.5rem;
 }
+.input {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-align: left;
+  color: #fff;
+}
 .button {
   border-radius: 0.5rem;
   padding: 0.5rem 1.75rem;
@@ -57,24 +64,49 @@ body {
   backdrop-filter: blur(1rem);
   cursor: pointer;
 }
-.input {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 0.875rem;
-  text-align: left;
-  color: #fff;
-}
 .button:hover,
 .button:active,
 .input:hover,
 .input:active {
   cursor: url("/icons/cursor.cur"), auto;
 }
-
+.delete-button {
+  color: #fff;
+  background-color: #fa7272;
+  transition: background-color 0.3s ease;
+}
+.delete-button:hover {
+  background-color: #f88;
+}
+.delete-button:active {
+  background-color: #fa7272;
+}
 /* Скрытие спиннеров для поля <input type="number"> */
 /* Для Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* Анимациии для Модального окна */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
