@@ -70,7 +70,7 @@ const handleDragStart = (event) => {
 
   // Обновление источника изображения
   const dragImageImg = img.querySelector("img");
-  dragImageImg.src = inventoryStore.selectedItem.image;
+  dragImageImg.src = props.item.image;
 
   document.body.classList.add("dragging");
   document.body.appendChild(img);

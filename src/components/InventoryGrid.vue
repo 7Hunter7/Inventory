@@ -30,6 +30,13 @@ const handleDragOver = (x, y) => {
 };
 
 const handleDrop = (x, y) => {
+  // Проверяем, есть ли уже элемент в целевой ячейке
+  const existingItem = inventoryStore.items.find(
+    (item) => item.x === x && item.y === y
+  );
+  if (existingItem) {
+    return;
+  }
   inventoryStore.moveItem(inventoryStore.draggedItem.id, x, y);
 };
 
