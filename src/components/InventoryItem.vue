@@ -135,9 +135,9 @@ document.addEventListener("dragend", () => {
   width: 6.5rem;
   height: 6.25rem;
   cursor: pointer;
-
   &.selected {
-    background: #2f2f2f; /* Фон для выбранного элемента */
+    background: #2f2f2f;
+    cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &:hover:not(.selected) {
     background: #2f2f2f;
