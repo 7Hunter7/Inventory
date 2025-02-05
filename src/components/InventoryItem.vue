@@ -21,8 +21,8 @@
     <div
       style="
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 20px;
+        right: 20px;
         width: 20px;
         height: 20px;
         background-image: url('/icons/icon-move.png');
@@ -70,22 +70,22 @@ const handleDragStart = (event) => {
 
   // Обновление источника изображения
   const dragImageImg = img.querySelector("img");
-  dragImageImg.src = props.item.image;
+  dragImageImg.src = inventoryStore.selectedItem.image;
 
-  // Создание прозрачного изображения
-  const transparentImage = new Image();
-  transparentImage.src =
-    "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // Прозрачный GIF размером 1x1,который позволяет полностью скрыть стандартную иконку курсора браузера.
+  document.body.classList.add("dragging");
+  document.body.appendChild(img);
 
   // Установика изображение перетаскивания
-  event.dataTransfer.setDragImage(transparentImage, 0, 0);
-
-  document.body.appendChild(img);
+  event.dataTransfer.setDragImage(img, 50, 50); // Положение изображения перетаскивания
 
   event.dataTransfer.setData("text/plain", JSON.stringify(props.item));
 
   emit("dragstart", event);
 };
+
+document.addEventListener("dragend", () => {
+  document.body.classList.remove("dragging");
+});
 </script>
 
 <style lang="scss" scoped>
@@ -97,22 +97,18 @@ const handleDragStart = (event) => {
   width: 6.5rem;
   height: 6.25rem;
   cursor: pointer;
-
   &:hover {
     background: #2f2f2f;
     cursor: url("/icons/cursor-hover.cur"), auto;
   }
-
   &:active {
     cursor: url("/icons/cursor-move.cur"), auto;
   }
 }
-
 .item-image {
   width: 3.375rem;
   height: 3.375rem;
 }
-
 .item-count {
   position: absolute;
   bottom: 0;

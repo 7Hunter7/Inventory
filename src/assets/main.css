@@ -32,9 +32,6 @@ body {
   padding: 2rem;
   cursor: url("/icons/cursor.cur"), auto;
 }
-body.dragging {
-  cursor: none; /* Скрываем стандартный курсор */
-}
 .content {
   display: flex;
   flex-direction: row;
