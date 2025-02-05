@@ -22,18 +22,15 @@
             v-for="(block, index) in blockCount"
             :key="index"
             :class="{
-              'modal-text--width-1': index === 1,
-              'modal-text--width-2': index === 2,
-              'modal-text--width-3': index === 3,
-              'modal-text--width-4': index === 4,
+              'modal-text--width-1': index === 0,
+              'modal-text--width-2': index === 1,
+              'modal-text--width-3': index === 2,
+              'modal-text--width-4': index === 3,
               'modal-text--last': index === blockCount - 1,
             }"
           ></div>
           <div class="modal-hr"></div>
-          <button
-            class="button modal__delete-button"
-            @click="openQuantityModal"
-          >
+          <button class="button delete-button" @click="openQuantityModal">
             Удалить предмет
           </button>
         </div>
@@ -56,7 +53,7 @@ import QuantityModal from "./QuantityModal.vue";
 const props = defineProps({
   blockCount: {
     type: Number,
-    default: 6,
+    default: 5,
   },
   gridRef: {
     type: Object,
@@ -122,11 +119,6 @@ defineExpose({
   animation: slideIn 0.4s ease forwards;
   &.modal-exit {
     animation: slideOut 0.3s ease forwards;
-  }
-  &__delete-button {
-    margin-top: 1.5rem;
-    width: 100%;
-    padding: 0.7rem;
   }
 }
 .modal-container {
@@ -195,8 +187,13 @@ defineExpose({
   }
   &--last {
     width: 5rem;
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
+}
+.delete-button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.7rem;
 }
 
 /* Анимациии для Модального окна */
