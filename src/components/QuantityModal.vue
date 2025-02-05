@@ -7,6 +7,7 @@
     >
       <div class="modal-content">
         <input
+          class="modal__input"
           type="number"
           placeholder="Введите количество"
           v-model.number="quantityToRemove"
@@ -114,7 +115,7 @@ const handleEnterClose = (event) => {
   &.modal-exit {
     animation: slideOut 0.3s ease forwards;
   }
-  & input[type="number"] {
+  &__input {
     padding: 0.5rem;
     border: 1px solid #4d4d4d;
     border-radius: 0.25rem;
