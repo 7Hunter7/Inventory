@@ -12,7 +12,10 @@
           placeholder="Введите количество"
           v-model.number="quantityToRemove"
           :max="item?.quantity"
-          :class="{ error: quantityToRemove > item?.quantity }"
+          :class="{
+            error:
+              quantityToRemove > item?.quantity || quantityToRemove === null,
+          }"
         />
         <div class="modal-buttons">
           <button class="button close-button" @click="closeModal">
@@ -67,7 +70,11 @@ const closeModal = () => {
 };
 
 const removeItems = () => {
-  if (quantityToRemove.value > props.item.quantity) return;
+  if (
+    quantityToRemove.value > props.item.quantity ||
+    quantityToRemove.value === null
+  )
+    return;
   inventoryStore.removeItem(props.item.id, quantityToRemove.value);
   closeModal();
   setTimeout(() => {
