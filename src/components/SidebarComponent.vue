@@ -8,11 +8,11 @@
         v-for="(block, index) in blockCount"
         :key="index"
         :class="{
-          'sidebar-text--width-1': index === 1,
-          'sidebar-text--width-2': index === 2,
-          'sidebar-text--width-3': index === 3,
-          'sidebar-text--width-4': index === 4,
-          'sidebar-text--width-5': index === 5,
+          'sidebar-text--width-1': index === 0,
+          'sidebar-text--width-2': index === 1,
+          'sidebar-text--width-3': index === 2,
+          'sidebar-text--width-4': index === 3,
+          'sidebar-text--width-5': index === 4,
           'sidebar-text--last': index === blockCount - 1,
         }"
       ></div>
