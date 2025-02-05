@@ -7,6 +7,14 @@
         class="sidebar-text"
         v-for="(block, index) in blockCount"
         :key="index"
+        :class="{
+          'sidebar-text--width-1': index === 1,
+          'sidebar-text--width-2': index === 2,
+          'sidebar-text--width-3': index === 3,
+          'sidebar-text--width-4': index === 4,
+          'sidebar-text--width-5': index === 5,
+          'sidebar-text--last': index === blockCount - 1,
+        }"
       ></div>
     </div>
   </aside>
@@ -59,23 +67,22 @@ const props = defineProps({
   margin-bottom: 1rem;
   border-radius: 0.25rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
-
-  &:nth-child(2) {
+  &--width-1 {
     width: 9.6875rem;
   }
-  &:nth-child(3) {
+  &--width-2 {
     width: 11.875rem;
   }
-  &:nth-child(4) {
+  &--width-3 {
     width: 10.625rem;
   }
-  &:nth-child(5) {
+  &--width-4 {
     width: 10rem;
   }
-  &:nth-child(6) {
+  &--width-5 {
     width: 8.75rem;
   }
-  &:last-child {
+  &--last {
     margin-top: 0.875rem;
     width: 5rem;
     margin-bottom: 0;
