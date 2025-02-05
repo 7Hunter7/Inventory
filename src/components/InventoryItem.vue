@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, onMounted, watch } from "vue";
+import { defineProps, defineEmits, ref, onMounted, watchEffect } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 
 const props = defineProps({
@@ -65,20 +65,34 @@ onMounted(() => {
   }
 });
 
+watchEffect(() => {
+  const img = dragImage.value;
+  if (img) {
+    const dragImageImg = img.querySelector("img");
+    if (dragImageImg) {
+      dragImageImg.src = inventoryStore.draggedItem?.image || "";
+    }
+  }
+});
+
 const handleDragStart = (event) => {
   const img = dragImage.value;
-
-  // Обновление источника изображения
-  const dragImageImg = img.querySelector("img");
-  dragImageImg.src = props.item.image;
-
   document.body.classList.add("dragging");
+
+  // Установка src после добавления в DOM
   document.body.appendChild(img);
+  const dragImageImg = img.querySelector("img");
+  if (dragImageImg) {
+    dragImageImg.src = inventoryStore.draggedItem.image;
+  }
 
   // Установика изображение перетаскивания
-  event.dataTransfer.setDragImage(img, 50, 50); // Положение изображения перетаскивания
-
+  event.dataTransfer.setDragImage(img, 50, 50); // Положение
   event.dataTransfer.setData("text/plain", JSON.stringify(props.item));
+
+  // Скрытие модальных окна
+  inventoryStore.closeItemModal();
+  inventoryStore.closeQuantityModal();
 
   emit("dragstart", event);
 };
