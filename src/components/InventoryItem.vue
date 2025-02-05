@@ -39,7 +39,15 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, onMounted, watch } from "vue";
+import {
+  defineProps,
+  defineEmits,
+  ref,
+  computed,
+  onMounted,
+  watch,
+  watchEffect,
+} from "vue";
 import { useInventoryStore } from "../stores/store.js";
 
 const props = defineProps({

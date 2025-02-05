@@ -32,13 +32,6 @@ body {
   padding: 2rem;
   cursor: url("/icons/cursor.cur"), auto;
 }
-body.dragging {
-  cursor: none; /* Скрываем стандартный курсор */
-  -webkit-user-select: none; /* Запрещаем выделение текста */
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 .content {
   display: flex;
   flex-direction: row;
