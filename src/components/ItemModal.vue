@@ -23,7 +23,10 @@
             :key="index"
           ></div>
           <div class="modal-hr"></div>
-          <button class="button delete-button" @click="openQuantityModal">
+          <button
+            class="button modal__delete-button"
+            @click="openQuantityModal"
+          >
             Удалить предмет
           </button>
         </div>
@@ -113,6 +116,11 @@ defineExpose({
   &.modal-exit {
     animation: slideOut 0.3s ease forwards;
   }
+  &__delete-button {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.7rem;
+  }
 }
 .modal-container {
   display: flex;
@@ -182,11 +190,6 @@ defineExpose({
     width: 5rem;
     margin-bottom: 0;
   }
-}
-.delete-button {
-  margin-top: 1.5rem;
-  width: 100%;
-  padding: 0.7rem;
 }
 
 /* Анимациии для Модального окна */
