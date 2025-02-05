@@ -18,9 +18,11 @@
           <button class="button close-button" @click="closeModal">
             Отмена
           </button>
-          <button class="button delete-button" @click="removeItems">
-            Подтвердить
-          </button>
+          <DeleteButton
+            class="modal__delete-button"
+            text="Подтвердить"
+            @click="removeItems"
+          />
         </div>
       </div>
     </aside>
@@ -28,6 +30,7 @@
 </template>
 
 <script setup>
+import DeleteButton from "./DeleteButton.vue";
 import { useInventoryStore } from "../stores/store.js";
 import { ref, onMounted, onUnmounted } from "vue";
 
@@ -115,6 +118,10 @@ const handleEnterClose = (event) => {
   &.modal-exit {
     animation: slideOut 0.3s ease forwards;
   }
+  &__delete-button {
+    margin-top: 0rem;
+    padding: 0.5rem 0.9375rem;
+  }
   &__input {
     padding: 0.5rem;
     border: 1px solid #4d4d4d;
@@ -151,9 +158,6 @@ const handleEnterClose = (event) => {
     &:active {
       opacity: 0.6;
     }
-  }
-  .delete-button {
-    padding: 0.5rem 0.9375rem;
   }
 }
 

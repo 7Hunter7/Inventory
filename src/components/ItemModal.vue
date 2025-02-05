@@ -30,9 +30,7 @@
             }"
           ></div>
           <div class="modal-hr"></div>
-          <button class="button delete-button" @click="openQuantityModal">
-            Удалить предмет
-          </button>
+          <DeleteButton text="Удалить предмет" @click="openQuantityModal" />
         </div>
       </div>
       <QuantityModal
@@ -48,6 +46,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
+import DeleteButton from "./DeleteButton.vue";
 import QuantityModal from "./QuantityModal.vue";
 
 const props = defineProps({
@@ -189,11 +188,6 @@ defineExpose({
     width: 5rem;
     margin-bottom: 1.5rem;
   }
-}
-.delete-button {
-  margin-top: 1.5rem;
-  width: 100%;
-  padding: 0.7rem;
 }
 
 /* Анимациии для Модального окна */
