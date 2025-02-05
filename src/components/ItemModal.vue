@@ -21,6 +21,13 @@
             class="modal-text"
             v-for="(block, index) in blockCount"
             :key="index"
+            :class="{
+              'modal-text--width-1': index === 1,
+              'modal-text--width-2': index === 2,
+              'modal-text--width-3': index === 3,
+              'modal-text--width-4': index === 4,
+              'modal-text--last': index === blockCount - 1,
+            }"
           ></div>
           <div class="modal-hr"></div>
           <button
@@ -174,19 +181,19 @@ defineExpose({
   margin-bottom: 1rem;
   border-radius: 0.25rem;
   background: linear-gradient(90deg, #3c3c3c 0%, #444 51.04%, #333 100%);
-  &:nth-child(3) {
+  &--width-1 {
     width: 100%;
   }
-  &:nth-child(4) {
+  &--width-2 {
     width: 100%;
   }
-  &:nth-child(5) {
+  &--width-3 {
     width: 100%;
   }
-  &:nth-child(6) {
+  &--width-4 {
     width: 11.25rem;
   }
-  &:nth-child(7) {
+  &--last {
     width: 5rem;
     margin-bottom: 0;
   }
