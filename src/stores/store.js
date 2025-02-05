@@ -64,7 +64,7 @@ export const useInventoryStore = defineStore("inventory", {
   // Cохранение состояния
   persist: {
     enabled: true,
-    storage: sessionStorage, //sessionStorage или localStorage
+    storage: localStorage, //sessionStorage или localStorage
     key: "my-inventory",
     paths: ["items"],
   },
