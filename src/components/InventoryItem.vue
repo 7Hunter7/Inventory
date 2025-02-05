@@ -17,7 +17,12 @@
     ref="dragImage"
     style="position: absolute; top: -1000px; left: -1000px"
   >
-    <img :src="item.image" :alt="item.name" style="width: 54px; height: 54px" />
+    <img
+      v-if="inventoryStore.draggedItem"
+      :src="inventoryStore.draggedItem.image"
+      :alt="inventoryStore.draggedItem.name"
+      style="width: 54px; height: 54px"
+    />
     <div
       style="
         position: absolute;
@@ -33,7 +38,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, onMounted, watchEffect } from "vue";
+import { defineProps, defineEmits, ref, onMounted, watch } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 
 const props = defineProps({
@@ -65,40 +70,36 @@ onMounted(() => {
   }
 });
 
-watchEffect(() => {
-  const img = dragImage.value;
-  if (img) {
-    const dragImageImg = img.querySelector("img");
-    if (dragImageImg) {
-      dragImageImg.src = inventoryStore.draggedItem?.image || "";
-    }
-  }
-});
-
 const handleDragStart = (event) => {
   const img = dragImage.value;
-  document.body.classList.add("dragging");
+  if (!img) return;
 
-  // Установка src после добавления в DOM
+  // Скрытие модальных окна
+  inventoryStore.closeItemModal();
+  inventoryStore.closeQuantityModal();
+
+  document.body.classList.add("dragging");
   document.body.appendChild(img);
+
+  // Устанавка draggedItem в store
+  inventoryStore.draggedItem = props.item;
+
+  // Устанавка src
   const dragImageImg = img.querySelector("img");
   if (dragImageImg) {
     dragImageImg.src = inventoryStore.draggedItem.image;
   }
 
-  // Установика изображение перетаскивания
+  // Установика изображения перетаскивания
   event.dataTransfer.setDragImage(img, 50, 50); // Положение
   event.dataTransfer.setData("text/plain", JSON.stringify(props.item));
-
-  // Скрытие модальных окна
-  inventoryStore.closeItemModal();
-  inventoryStore.closeQuantityModal();
 
   emit("dragstart", event);
 };
 
 document.addEventListener("dragend", () => {
   document.body.classList.remove("dragging");
+  inventoryStore.draggedItem = null;
 });
 </script>
 
