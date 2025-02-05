@@ -12,10 +12,7 @@
           placeholder="Введите количество"
           v-model.number="quantityToRemove"
           :max="item?.quantity"
-          :class="{
-            error:
-              quantityToRemove > item?.quantity || quantityToRemove === null,
-          }"
+          :class="{ error: quantityToRemove > item?.quantity }"
         />
         <div class="modal-buttons">
           <button class="button close-button" @click="closeModal">
