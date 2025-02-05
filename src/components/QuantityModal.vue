@@ -11,6 +11,7 @@
           placeholder="Введите количество"
           v-model.number="quantityToRemove"
           :max="item?.quantity"
+          :class="{ error: quantityToRemove > item?.quantity }"
         />
         <div class="modal-buttons">
           <button class="button close-button" @click="closeModal">
@@ -119,6 +120,11 @@ const handleEnterClose = (event) => {
     background: #262626;
     color: #fff;
     opacity: 0.4;
+    transition: border-color 0.3s ease;
+    &.error {
+      border-color: #fa7272;
+      animation: blink 1s linear infinite; /* Анимация мигания */
+    }
   }
 }
 .modal-content {
@@ -168,6 +174,11 @@ const handleEnterClose = (event) => {
   to {
     transform: translateY(100%);
     opacity: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }
 </style>
