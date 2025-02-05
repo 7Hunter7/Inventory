@@ -75,9 +75,9 @@ const handleDragStart = (event) => {
   // Создание прозрачного изображения
   const transparentImage = new Image();
   transparentImage.src =
-    "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // Прозрачный GIF размером 1x1
+    "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // Прозрачный GIF размером 1x1,который позволяет полностью скрыть стандартную иконку курсора браузера.
 
-  // Установить изображение перетаскивания
+  // Установика изображение перетаскивания
   event.dataTransfer.setDragImage(transparentImage, 0, 0);
 
   document.body.appendChild(img);
