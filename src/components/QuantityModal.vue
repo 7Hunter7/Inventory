@@ -63,6 +63,7 @@ const closeModal = () => {
 };
 
 const removeItems = () => {
+  if (quantityToRemove.value > props.item.quantity) return;
   inventoryStore.removeItem(props.item.id, quantityToRemove.value);
   closeModal();
   setTimeout(() => {
