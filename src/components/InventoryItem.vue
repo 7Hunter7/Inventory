@@ -1,6 +1,7 @@
 <template>
   <div
     class="item-wrapper"
+    :class="{ selected: isSelected }"
     draggable="true"
     @dragstart="handleDragStart"
     @click="$emit('click')"
@@ -48,9 +49,13 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["dragstart", "click"]);
 const inventoryStore = useInventoryStore();
+const emit = defineEmits(["dragstart", "click"]);
 const dragImage = ref(null);
+
+const isSelected = computed(() => {
+  return inventoryStore.selectedItem?.id === props.item.id;
+});
 
 onMounted(() => {
   if (dragImage.value) {
@@ -67,6 +72,16 @@ onMounted(() => {
       alignItems: "center",
       justifyContent: "center",
     });
+  }
+});
+
+watchEffect(() => {
+  const img = dragImage.value;
+  if (img) {
+    const dragImageImg = img.querySelector("img");
+    if (dragImageImg) {
+      dragImageImg.src = inventoryStore.draggedItem?.image || "";
+    }
   }
 });
 
@@ -112,7 +127,11 @@ document.addEventListener("dragend", () => {
   width: 6.5rem;
   height: 6.25rem;
   cursor: pointer;
-  &:hover {
+
+  &.selected {
+    background: #2f2f2f; /* Фон для выбранного элемента */
+  }
+  &:hover:not(.selected) {
     background: #2f2f2f;
     cursor: url("/icons/cursor-hover.cur"), auto;
   }
