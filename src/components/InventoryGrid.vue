@@ -30,13 +30,18 @@ const handleDragOver = (x, y) => {
 };
 
 const handleDrop = (x, y) => {
-  // Проверяем, есть ли уже элемент в целевой ячейке
+  // Проверяем, есть ли draggedItem и его id
+  if (!inventoryStore.draggedItem || !inventoryStore.draggedItem.id) {
+    return;
+  }
   const existingItem = inventoryStore.items.find(
     (item) => item.x === x && item.y === y
   );
+  // Если ячейка занята, отменяем перемещение
   if (existingItem) {
     return;
   }
+  // Если ячейка свободна, перемещаем элемент
   inventoryStore.moveItem(inventoryStore.draggedItem.id, x, y);
 };
 
@@ -65,13 +70,11 @@ defineExpose({
   background: #262626;
   overflow: hidden;
   z-index: 1;
-
   .inventory-row {
     display: flex;
     border-bottom: 1px solid #4d4d4d;
     width: 100%;
     height: 6.25rem;
-
     &:last-child {
       border-bottom: none;
     }
