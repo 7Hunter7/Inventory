@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, onMounted, onUnmounted } from "vue";
+import { defineEmits, ref, onMounted, onUnmounted } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
 import QuantityModal from "./QuantityModal.vue";

@@ -28,7 +28,7 @@
 
 <script setup>
 import { useInventoryStore } from "../stores/store.js";
-import { ref, defineProps, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const quantityToRemove = ref(null);
 const inventoryStore = useInventoryStore();
