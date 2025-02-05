@@ -17,7 +17,7 @@
     ref="dragImage"
     style="position: absolute; top: -1000px; left: -1000px"
   >
-    <img :src="item.image" :alt="item.name" style="width: 100%; height: 100%" />
+    <img :src="item.image" :alt="item.name" style="width: 54px; height: 54px" />
     <div
       style="
         position: absolute;
@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, onMounted } from "vue";
+import { defineProps, defineEmits, ref, onMounted, watch } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 
 const props = defineProps({
@@ -67,12 +67,21 @@ onMounted(() => {
 
 const handleDragStart = (event) => {
   const img = dragImage.value;
-  document.body.appendChild(img); // Добавляем в документ
 
-  // Установка изображения для перетаскивания
-  event.dataTransfer.setDragImage(img, 50, 50); // Положение изображения
+  // Обновление источника изображения
+  const dragImageImg = img.querySelector("img");
+  dragImageImg.src = props.item.image;
 
-  // Установка данных для передачи
+  // Создание прозрачного изображения
+  const transparentImage = new Image();
+  transparentImage.src =
+    "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // Прозрачный GIF размером 1x1
+
+  // Установить изображение перетаскивания
+  event.dataTransfer.setDragImage(transparentImage, 0, 0);
+
+  document.body.appendChild(img);
+
   event.dataTransfer.setData("text/plain", JSON.stringify(props.item));
 
   emit("dragstart", event);
