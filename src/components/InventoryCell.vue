@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import { defineEmits } from "vue";
 import InventoryItem from "./InventoryItem.vue";
 import { useInventoryStore } from "../stores/store.js";
 
