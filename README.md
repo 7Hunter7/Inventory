@@ -2,6 +2,9 @@
 
 Это интерактивное веб-приложение для управления инвентарем, разработанное с использованием `Vue.js`, `Pinia` для управления состоянием и `SCSS` для стилизации. Приложение предоставляет пользователю удобный интерфейс для организации и управления предметами в инвентаре, сохраняя состояние между сессиями.
 
+Макет: 
+[https://www.figma.com/design/Inventory](https://www.figma.com/design/dOBcx1bR4ZT3ZStLSOqvs1/Inventory?node-id=0-1&p=f&t=19Tur0bAzMiMoG9M-0)
+
 ## Особенности
 
 1.  **Инвентарная сетка:**
@@ -68,43 +71,42 @@
 
 ## Структура проекта
 
-public
-public\favicons
-public\fonts
-public\icons
-public\Element_1.png
-public\Element_2.png
-public\Element_3.png
-public\Sidebar.png
+1. public:
+- public\favicons
+- public\fonts
+- public\icons
+- public\Element_1.png
+- public\Element_2.png
+- public\Element_3.png
+- public\Sidebar.png
 
-src
-src\assets
-src\assets\main.css
+2. src:
+- src\assets
+- src\assets\main.css
 
-src\components
-src\components\CloseButton.vue
-src\components\DeleteButton.vue
-src\components\FooterComponent.vue
-src\components\InventoryCell.vue
-src\components\InventoryGrid.vue
-src\components\InventoryItem.vue
-src\components\ItemModal.vue
-src\components\QuantityModal.vue
-src\components\SidebarComponent.vue
+3. src\components:
+- src\components\CloseButton.vue
+- src\components\DeleteButton.vue
+- src\components\FooterComponent.vue
+- src\components\InventoryCell.vue
+- src\components\InventoryGrid.vue
+- src\components\InventoryItem.vue
+- src\components\ItemModal.vue
+- src\components\QuantityModal.vue
+- src\components\SidebarComponent.vue
 
-src\stores
-src\stores\store.js
+4. src\stores:
+- src\stores\store.js
 
-src\App.vue
-src\main.js
-
-index.html
-README.md
-.gitignore
-jsconfig.json
-package-lock.json
-package.json
-vite.config.js
+5. src\App.vue
+6. src\main.js
+7. index.html
+8. README.md
+9. .gitignore
+10. jsconfig.json
+11. package-lock.json
+12. package.json
+13. vite.config.js
 
 ## Как запустить
 
