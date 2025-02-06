@@ -134,8 +134,8 @@ defineExpose({
 .modal-close {
   position: absolute;
   z-index: 10;
-  top: 0.8rem;
-  right: 0.6rem;
+  top: 1rem;
+  right: 1rem;
 }
 .modal-image {
   display: flex;
