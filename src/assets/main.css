@@ -27,7 +27,7 @@ body {
   box-sizing: border-box;
   max-width: 51rem;
   position: relative;
-  background: #1d1d1d;
+  background-color: #1d1d1d;
   margin: 0 auto;
   padding: 2rem;
   cursor: url("/icons/cursor.cur"), auto;
@@ -61,7 +61,7 @@ body {
   text-align: center;
   border: none;
   backdrop-filter: blur(1rem);
-  cursor: pointer;
+  cursor: url("/icons/cursor.cur"), auto;
 }
 .button:hover,
 .button:active,

@@ -19,7 +19,7 @@ defineEmits(["close"]);
   border-radius: 0.75rem;
   width: 47rem;
   padding: 1.125rem;
-  background: #262626;
+  background-color: #262626;
   color: #fff;
   z-index: 1;
 }

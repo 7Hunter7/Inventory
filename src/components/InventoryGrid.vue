@@ -67,7 +67,7 @@ defineExpose({
   border-radius: 0.75rem;
   width: 32.75rem;
   height: 31.5rem;
-  background: #262626;
+  background-color: #262626;
   overflow: hidden;
   z-index: 1;
   .inventory-row {

@@ -61,13 +61,13 @@ onMounted(() => {
   if (dragImage.value) {
     Object.assign(dragImage.value.style, {
       border: "1px solid #4d4d4d",
-      borderRadius: "24px",
-      width: "105px",
-      height: "100px",
+      borderRadius: "1.5rem",
+      width: "6.5rem",
+      height: "6.25rem",
       background: "#262626",
       position: "absolute",
-      top: "-1000px",
-      left: "-1000px",
+      top: "-50rem",
+      left: "-50rem",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -128,11 +128,11 @@ document.addEventListener("dragend", () => {
   height: 6.25rem;
   cursor: pointer;
   &.selected {
-    background: #2f2f2f;
+    background-color: #2f2f2f;
     cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &:hover:not(.selected) {
-    background: #2f2f2f;
+    background-color: #2f2f2f;
     cursor: url("/icons/cursor-hover.cur"), auto;
   }
   &:active {
@@ -151,7 +151,7 @@ document.addEventListener("dragend", () => {
   height: 1rem;
   border: 1px solid #4d4d4d;
   border-radius: 0.375rem 0 0 0;
-  background: #262626;
+  background-color: #262626;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 0.625rem;

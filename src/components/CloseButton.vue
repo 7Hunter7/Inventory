@@ -22,7 +22,7 @@ defineEmits(["close"]);
 .close-button {
   border: none;
   background: none;
-  cursor: pointer;
+  cursor: url("/icons/cursor.cur"), auto;
   transition: opacity 0.2s ease;
   &:hover,
   &:active {
