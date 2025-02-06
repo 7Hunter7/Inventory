@@ -30,8 +30,8 @@
             }"
           ></div>
           <div class="modal-hr"></div>
-          <DeleteButton text="Удалить предмет" @click="openQuantityModal" />
         </div>
+        <ButtonWithText text="Удалить предмет" @click="openQuantityModal" />
       </div>
       <QuantityModal
         v-if="inventoryStore.isQuantityModalOpen"
@@ -46,7 +46,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { useInventoryStore } from "../stores/store.js";
 import CloseButton from "./CloseButton.vue";
-import DeleteButton from "./DeleteButton.vue";
+import ButtonWithText from "./ButtonWithText.vue";
 import QuantityModal from "./QuantityModal.vue";
 
 const props = defineProps({
@@ -112,7 +112,7 @@ defineExpose({
   right: 0.8rem;
   z-index: 5;
   backdrop-filter: blur(1rem);
-  background: rgba(38, 38, 38, 0.5);
+  background-color: rgba(38, 38, 38, 0.5);
   transform: translateX(0);
   opacity: 1;
   animation: slideIn 0.4s ease forwards;
@@ -129,13 +129,13 @@ defineExpose({
   border: solid #4d4d4d;
   border-radius: 0 0.75rem 0.75rem 0;
   border: 1px solid #4d4d4d;
-  padding: 3.3rem 0.9rem 1rem 0.9rem;
+  padding: 3.3rem 0.9rem 1.15rem 0.9rem;
 }
 .modal-close {
   position: absolute;
   z-index: 10;
-  top: 1rem;
-  right: 1rem;
+  top: 0.8rem;
+  right: 0.6rem;
 }
 .modal-image {
   display: flex;
@@ -148,7 +148,7 @@ defineExpose({
 .modal-hr {
   width: 13.125rem;
   height: 1px;
-  background: #4d4d4d;
+  background-color: #4d4d4d;
 }
 .modal-content {
   display: flex;
@@ -157,6 +157,7 @@ defineExpose({
   align-items: center;
   justify-content: center;
   padding: 0 0.3rem;
+  margin-bottom: 1.5rem;
 }
 .modal-title {
   margin-top: 1rem;

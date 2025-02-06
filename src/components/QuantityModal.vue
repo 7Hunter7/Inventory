@@ -15,11 +15,13 @@
           :class="{ error: quantityToRemove > item?.quantity }"
         />
         <div class="modal-buttons">
-          <button class="button close-button" @click="closeModal">
-            Отмена
-          </button>
-          <DeleteButton
-            class="modal__delete-button"
+          <ButtonWithText
+            class="modal__close-button button"
+            text="Отмена"
+            @click="closeModal"
+          />
+          <ButtonWithText
+            class="modal__delete-button button"
             text="Подтвердить"
             @click="removeItems"
           />
@@ -30,7 +32,7 @@
 </template>
 
 <script setup>
-import DeleteButton from "./DeleteButton.vue";
+import ButtonWithText from "./ButtonWithText.vue";
 import { useInventoryStore } from "../stores/store.js";
 import { ref, onMounted, onUnmounted } from "vue";
 
@@ -115,7 +117,7 @@ const handleEnterClose = (event) => {
   border-radius: 0 0 0.75rem 0;
   padding: 1.25rem 1.3rem;
   backdrop-filter: blur(1rem);
-  background: rgba(38, 38, 38, 0.6);
+  background-color: rgba(38, 38, 38, 0.6);
   z-index: 10;
   opacity: 1;
   animation: slideIn 0.4s ease forwards;
@@ -123,14 +125,25 @@ const handleEnterClose = (event) => {
     animation: slideOut 0.3s ease forwards;
   }
   &__delete-button {
-    margin-top: 0rem;
     padding: 0.5rem 0.9375rem;
+  }
+  &__close-button {
+    padding: 0.5rem 1.2rem;
+    color: #2d2d2d;
+    background-color: #fff;
+    transition: opacity 0.3s ease;
+    &:hover {
+      background-color: #eee;
+    }
+    &:active {
+      background-color: #ddd;
+    }
   }
   &__input {
     padding: 0.5rem;
     border: 1px solid #4d4d4d;
     border-radius: 0.25rem;
-    background: #262626;
+    background-color: #262626;
     color: #fff;
     opacity: 0.4;
     transition: border-color 0.3s ease;
@@ -139,29 +152,17 @@ const handleEnterClose = (event) => {
       animation: blink 1s linear infinite; /* Анимация мигания */
     }
   }
-}
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  color: #fff;
-}
-.modal-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  border: none;
-  .close-button {
-    padding: 0.5rem 1.2rem;
-    color: #2d2d2d;
-    background: #fff;
-    transition: opacity 0.3s ease;
-    &:hover {
-      opacity: 0.8;
-    }
-    &:active {
-      opacity: 0.6;
-    }
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    color: #fff;
+  }
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
   }
 }
 
