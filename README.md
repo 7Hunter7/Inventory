@@ -71,43 +71,42 @@
 
 ## Структура проекта
 
-public
-public\favicons
-public\fonts
-public\icons
-public\Element_1.png
-public\Element_2.png
-public\Element_3.png
-public\Sidebar.png
+1. public:
+- public\favicons
+- public\fonts
+- public\icons
+- public\Element_1.png
+- public\Element_2.png
+- public\Element_3.png
+- public\Sidebar.png
 
-src
-src\assets
-src\assets\main.css
+2. src:
+- src\assets
+- src\assets\main.css
 
-src\components
-src\components\CloseButton.vue
-src\components\DeleteButton.vue
-src\components\FooterComponent.vue
-src\components\InventoryCell.vue
-src\components\InventoryGrid.vue
-src\components\InventoryItem.vue
-src\components\ItemModal.vue
-src\components\QuantityModal.vue
-src\components\SidebarComponent.vue
+3. src\components:
+- src\components\CloseButton.vue
+- src\components\DeleteButton.vue
+- src\components\FooterComponent.vue
+- src\components\InventoryCell.vue
+- src\components\InventoryGrid.vue
+- src\components\InventoryItem.vue
+- src\components\ItemModal.vue
+- src\components\QuantityModal.vue
+- src\components\SidebarComponent.vue
 
-src\stores
-src\stores\store.js
+4. src\stores:
+- src\stores\store.js
 
-src\App.vue
-src\main.js
-
-index.html
-README.md
-.gitignore
-jsconfig.json
-package-lock.json
-package.json
-vite.config.js
+5. src\App.vue
+6. src\main.js
+7. index.html
+8. README.md
+9. .gitignore
+10. jsconfig.json
+11. package-lock.json
+12. package.json
+13. vite.config.js
 
 ## Как запустить
 
